@@ -1,0 +1,19 @@
+{
+  "name": "tovartechnology",
+  "short_name": "tovartechnology",
+  "icons": [
+    {
+      "src": "./img/logo-tovartechnology-semfondo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./img/apple-touch-icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#0a1128",
+  "background_color": "#0a1128",
+  "display": "standalone"
+}

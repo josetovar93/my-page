@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth max-w-full overflow-x-hidden">
+<head>
+    <!-- FAVICONS E ATALHOS PARA TELA INICIAL DO CELULAR -->
+    <link rel="icon" type="image/png" sizes="32x32" href="./img/logo-tovartechnology-semfondo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./img/apple-touch-icon.png">
+    <link rel="manifest" href="./site.webmanifest">
+    <meta name="theme-color" content="#0a1128">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Esther Pessoa">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, max-scale=1.0">
+    <title>tovartechnology</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-indigo-500 selection:text-white w-full max-w-full relative overflow-x-hidden box-border">
+
+    <canvas id="starsCanvas" class="fixed inset-0 pointer-events-none z-0 w-full h-full"></canvas>
+
+    <header class="sticky top-0 bg-slate-950/80 backdrop-blur-md border-b border-slate-900 z-40 w-full max-w-full">
+        <nav class="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center gap-2 w-full box-border">
+            <a href="#" class="text-base sm:text-lg md:text-2xl font-bold tracking-tight bg-gradient-to-r from-indigo-400 to-violet-400 bg-clip-text text-transparent hover:scale-105 transition-transform duration-300 whitespace-nowrap">
+                &lt;tovartechnology /&gt;
+            </a>
+            <div class="space-x-2 md:space-x-6 flex text-xs sm:text-sm md:text-base font-medium text-slate-400 items-center shrink-0">
+                <a href="#solucoes" data-i18n="nav-solucoes" class="hover:text-indigo-400 transition-colors duration-300 hidden md:inline">O que eu faço</a>
+                <a href="#vantagens" data-i18n="nav-vantagens" class="hover:text-indigo-400 transition-colors duration-300 hidden md:inline">Vantagens</a>
+                <a href="#setores" data-i18n="nav-setores" class="hover:text-indigo-400 transition-colors duration-300 hidden md:inline">Setores</a>
+                <a href="#contacto" data-i18n="nav-contato" class="bg-indigo-600/10 text-indigo-400 border border-indigo-500/30 px-2.5 py-1.5 rounded-full hover:bg-indigo-600 hover:text-white transition-all duration-300 whitespace-nowrap">Contato</a>
+                
+                <div class="relative inline-block">
+                    <select id="langSelect" onchange="changeLanguage(this.value)" class="bg-slate-900 text-slate-200 text-[11px] sm:text-xs md:text-sm rounded-lg px-1.5 py-1.5 border border-slate-800 outline-none cursor-pointer hover:border-slate-700 transition-colors">
+                        <option value="pt">🇧🇷 Pt</option>
+                        <option value="es">🇪🇸 Es</option>
+                        <option value="en">🇺🇸 En</option>
+                    </select>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="w-full max-w-full overflow-hidden">
+        <section class="relative max-w-6xl mx-auto px-4 sm:px-6 pt-12 md:pt-20 pb-20 md:pb-28 grid grid-cols-1 md:grid-cols-12 gap-12 items-center min-h-[85vh] overflow-hidden w-full">
+            <div class="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-60 h-60 md:w-80 md:h-80 bg-indigo-600/10 rounded-full blur-3xl pointer-events-none"></div>
+            
+            <div class="md:col-span-7 space-y-6 z-10 text-left w-full max-w-full" data-aos="fade-right" data-aos-duration="1000">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-slate-800 bg-slate-900/60 text-xs md:text-sm text-indigo-400 font-medium max-w-full">
+                    <span class="flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse shrink-0"></span> <span data-i18n="hero-badge" class="truncate">Disponível para novos projetos</span>
+                </div>
+                <h1 class="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-tight text-white">
+                    <span data-i18n="hero-title1">Desenvolvimento web estratégico para</span> <span class="bg-gradient-to-r from-indigo-400 via-purple-400 to-blue-600 bg-clip-text text-transparent" data-i18n="hero-title2">empresas que desejam crescer no ambiente digital</span>
+                </h1>
+                <p class="text-sm sm:text-base md:text-xl text-slate-400 max-w-2xl leading-relaxed" data-i18n="hero-desc">
+                    Crio sites rápidos, modernos e personalizados, projetados para fortalecer sua marca, gerar mais oportunidades de negócio e oferecer uma excelente experiência aos seus clientes.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 pt-2 text-sm sm:text-base md:text-lg w-full">
+                    <a href="#solucoes" class="group bg-indigo-600 text-white px-6 py-3.5 rounded-xl font-medium hover:bg-indigo-500 transition-all duration-300 text-center shadow-lg shadow-indigo-600/20 hover:scale-[1.02]">
+                        <span data-i18n="hero-btn1">Ver O Que Eu Faço</span>
+                        <i class="fa-solid fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                    <a href="#contacto" data-i18n="hero-btn2" class="bg-slate-900 border border-slate-800 text-slate-300 px-6 py-3.5 rounded-xl font-medium hover:bg-slate-800 hover:border-slate-700 transition-all duration-300 text-center hover:scale-[1.02]">
+                        Vamos falar de negócios
+                    </a>
+                </div>
+            </div>
+
+            <div class="md:col-span-5 relative z-10 w-full flex flex-col items-center" data-aos="fade-left" data-aos-duration="1000">
+                <!-- Contenedor de la foto completamente redonda -->
+                <div class="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 mx-auto mb-4">
+                    <div class="w-full h-full rounded-full overflow-hidden border-4 border-indigo-500/30 bg-slate-900 shadow-2xl shadow-indigo-500/10 group">
+                        <img src="./img/josetovar.png" alt="José Tovar" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                </div>
+                
+                <!-- Nombre y función ubicados debajo de la foto -->
+                <div class="text-center space-y-1">
+                    <h3 class="text-xl md:text-2xl font-bold text-white tracking-wide">José Tovar</h3>
+                    <p class="text-xs md:text-sm font-semibold text-indigo-400 uppercase tracking-widest" data-i18n="hero-role">Desenvolvedor Web</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="solucoes" class="bg-slate-900/40 border-t border-b border-slate-900 py-16 md:py-24 px-4 sm:px-6 relative z-10 w-full overflow-hidden">
+            <div class="max-w-6xl mx-auto w-full">
+                <div class="text-center max-w-3xl mx-auto mb-12 md:mb-20" data-aos="fade-up">
+                    <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight text-white mb-4" data-i18n="sol-title">Soluções Digitais de Alta Performance</h2>
+                    <p class="text-slate-400 text-sm sm:text-base md:text-xl mb-4" data-i18n="sol-subtitle">Entenda como posso ajudar o seu negócio a crescer. Clique em um dos blocos para ver mais detalhes.</p>
+                    <span class="inline-block text-xs md:text-sm text-indigo-400 bg-indigo-500/10 border border-indigo-500/20 px-3 py-1 rounded-full"><i class="fa-solid fa-pointer mr-2"></i><span data-i18n="sol-expand">Clique para expandir informações</span></span>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 w-full">
+                    <div onclick="openModal('pme')" class="p-6 md:p-8 border border-slate-900 rounded-2xl bg-slate-900/60 hover:border-indigo-500/40 hover:bg-slate-900/90 transition-all duration-300 group cursor-pointer w-full box-border" data-aos="fade-up" data-aos-delay="100">
+                        <div class="w-11 h-11 md:w-12 md:h-12 bg-indigo-500/10 border border-indigo-500/20 rounded-xl flex items-center justify-center text-indigo-400 mb-6 text-xl group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-store"></i>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold mb-3 text-white" data-i18n="sol-pme-title">Para Pequenas e Médias Empresas (PMEs)</h3>
+                        <p class="text-slate-400 text-xs sm:text-sm md:text-base mb-6 leading-relaxed" data-i18n="sol-pme-desc">Focado em aumentar suas vendas diárias, atrair clientes na sua região e criar uma imagem altamente profissional para o seu negócio na internet.</p>
+                        <span class="text-xs md:text-sm font-medium text-indigo-400 group-hover:underline flex items-center gap-1"><span data-i18n="sol-pme-action">Ver como funciona</span> <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
+                    </div>
+
+                    <div onclick="openModal('corp')" class="p-6 md:p-8 border border-slate-900 rounded-2xl bg-slate-900/60 hover:border-purple-500/40 hover:bg-slate-900/90 transition-all duration-300 group cursor-pointer w-full box-border" data-aos="fade-up" data-aos-delay="200">
+                        <div class="w-11 h-11 md:w-12 md:h-12 bg-purple-500/10 border border-purple-500/20 rounded-xl flex items-center justify-center text-purple-400 mb-6 text-xl group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-building"></i>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold mb-3 text-white" data-i18n="sol-corp-title">Para Grandes Empresas e Corporações</h3>
+                        <p class="text-slate-400 text-xs sm:text-sm md:text-base mb-6 leading-relaxed" data-i18n="sol-corp-desc">Sistemas personalizados e seguros que aguentam milhares de acessos simultâneos e se conectam perfeitamente com as ferramentas que sua empresa já usa.</p>
+                        <span class="text-xs md:text-sm font-medium text-purple-400 group-hover:underline flex items-center gap-1"><span data-i18n="sol-corp-action">Ver benefícios estratégicos</span> <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
+                    </div>
+
+                    <div onclick="openModal('ia')" class="p-6 md:p-8 border border-slate-900 rounded-2xl bg-slate-900/60 hover:border-emerald-500/40 hover:bg-slate-900/90 transition-all duration-300 group cursor-pointer w-full box-border" data-aos="fade-up" data-aos-delay="300">
+                        <div class="w-11 h-11 md:w-12 md:h-12 bg-emerald-500/10 border border-emerald-500/20 rounded-xl flex items-center justify-center text-emerald-400 mb-6 text-xl group-hover:scale-110 transition-transform">
+                           <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold mb-3 text-white" data-i18n="sol-ia-title">Automação com Inteligência Artificial</h3>
+                        <p class="text-slate-400 text-xs sm:text-sm md:text-base mb-6 leading-relaxed" data-i18n="sol-ia-desc">Seus clientes atendidos 24 horas por dia, tirando dúvidas de forma humana, capturando contatos e fechando vendas no piloto automático.</p>
+                        <span class="text-xs md:text-sm font-medium text-emerald-400 group-hover:underline flex items-center gap-1"><span data-i18n="sol-ia-action">Ver funcionamento prático</span> <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="vantagens" class="max-w-6xl mx-auto py-16 md:py-24 px-4 sm:px-6 relative z-10 w-full overflow-hidden">
+            <div class="text-center max-w-2xl mx-auto mb-12 md:mb-20" data-aos="fade-up">
+                <span class="text-xs md:text-sm font-semibold text-indigo-400 uppercase tracking-widest" data-i18n="van-badge">O Diferencial Comercial</span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white mt-2 mb-4" data-i18n="van-title">Vantagens Reais para o Seu Negócio</h2>
+                <p class="text-slate-400 text-sm md:text-lg" data-i18n="van-subtitle">Contratar um programador web especialista traz benefícios financeiros diretos para sua estrutura.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 w-full">
+                <div class="p-6 border border-slate-900 rounded-xl bg-slate-900/20 text-center space-y-4 hover:bg-slate-900/40 transition-colors w-full box-border" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="text-3xl text-indigo-400"><i class="fa-solid fa-gauge-high"></i></div>
+                    <h3 class="text-lg font-bold text-white" data-i18n="van-1-title">Performance Otimizada</h3>
+                    <p class="text-xs sm:text-sm text-slate-400 leading-relaxed" data-i18n="van-1-desc">Sites lentos perdem clientes. Meu foco principal é otimizar o tempo de response. Cada segundo mais rápido aumenta sua conversão em até 20%.</p>
+                </div>
+                
+                <div class="p-6 border border-slate-900 rounded-xl bg-slate-900/20 text-center space-y-4 hover:bg-slate-900/40 transition-colors w-full box-border" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="text-3xl text-pink-500"><i class="fa-solid fa-reply"></i></div>
+                    <h3 class="text-lg font-bold text-white" data-i18n="van-2-title">Resposta Imediata</h3>
+                    <p class="text-xs sm:text-sm text-slate-400 leading-relaxed" data-i18n="van-2-desc">Seu cliente não quer esperar. No ambiente digital, lentidão no atendimento significa perder vendas para a concorrência. Desenvolvo soluções focadas em agilidade para não deixar seu cliente esperando.</p>
+                </div>
+
+                <div class="p-6 border border-slate-900 rounded-xl bg-slate-900/20 text-center space-y-4 hover:bg-slate-900/40 transition-colors w-full box-border" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="text-3xl text-emerald-400"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h3 class="text-lg font-bold text-white" data-i18n="van-3-title">Segurança de Dados</h3>
+                    <p class="text-xs sm:text-sm text-slate-400 leading-relaxed" data-i18n="van-3-desc">Proteção total contra vulnerabilidades na web. Desenvolvo sistemas aplicando criptografia e sanitização estrita de dados.</p>
+                </div>
+                <div class="p-6 border border-slate-900 rounded-xl bg-slate-900/20 text-center space-y-4 hover:bg-slate-900/40 transition-colors w-full box-border" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="text-3xl text-blue-400"><i class="fa-solid fa-code-branch"></i></div>
+                    <h3 class="text-lg font-bold text-white" data-i18n="van-4-title">Código Limpo</h3>
+                    <p class="text-xs sm:text-sm text-slate-400 leading-relaxed" data-i18n="van-4-desc">Escrevo código limpo e padronizado. Isso significa que o software poderá receber novas funções futuras sem precisar ser refeito do zero.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="setores" class="bg-slate-900/20 border-t border-b border-slate-900 py-16 md:py-24 px-4 sm:px-6 relative z-10 w-full overflow-hidden">
+            <div class="max-w-6xl mx-auto w-full">
+                <div class="text-center max-w-2xl mx-auto mb-12" data-aos="fade-up">
+                    <span class="text-xs md:text-sm font-semibold text-indigo-400 uppercase tracking-widest" data-i18n="set-badge">Soluções Sob Medida</span>
+                    <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight text-white mt-2 mb-4" data-i18n="set-title">Setores em que Atuo</h2>
+                    <p class="text-slate-400 text-sm md:text-lg" data-i18n="set-subtitle">Clique em cada sector para ver o tipo de plataforma estratégica que desenvolvo para o seu nicho comercial.</p>
+                </div>
+
+                <div class="flex flex-wrap justify-center gap-3 mb-12 max-w-4xl mx-auto px-2 w-full box-border" data-aos="fade-up">
+                    <button onclick="switchSector('alimentacao', this)" class="sector-btn px-4 py-2.5 rounded-xl border border-indigo-500 bg-indigo-600/10 text-indigo-400 font-medium text-xs sm:text-sm md:text-base transition-all duration-300 cursor-pointer">
+                        <i class="fa-solid fa-utensils mr-2"></i><span data-i18n="btn-setor-1">Restaurantes & Pizzarias</span>
+                    </button>
+                    <button onclick="switchSector('estetica', this)" class="sector-btn px-4 py-2.5 rounded-xl border border-slate-800 bg-slate-900/50 text-slate-400 font-medium text-xs sm:text-sm md:text-base hover:border-slate-700 hover:text-slate-200 transition-all duration-300 cursor-pointer">
+                        <i class="fa-solid fa-scissors mr-2"></i><span data-i18n="btn-setor-2">Barbearias & Estética</span>
+                    </button>
+                    <button onclick="switchSector('pet', this)" class="sector-btn px-4 py-2.5 rounded-xl border border-slate-800 bg-slate-900/50 text-slate-400 font-medium text-xs sm:text-sm md:text-base hover:border-slate-700 hover:text-slate-200 transition-all duration-300 cursor-pointer">
+                        <i class="fa-solid fa-paw mr-2"></i><span data-i18n="btn-setor-3">Petshops & Clínicas</span>
+                    </button>
+                    <button onclick="switchSector('comercio', this)" class="sector-btn px-4 py-2.5 rounded-xl border border-slate-800 bg-slate-900/50 text-slate-400 font-medium text-xs sm:text-sm md:text-base hover:border-slate-700 hover:text-slate-200 transition-all duration-300 cursor-pointer">
+                        <i class="fa-solid fa-bag-shopping mr-2"></i><span data-i18n="btn-setor-4">Lojas & Pequenos Comércios</span>
+                    </button>
+                </div>
+
+                <div id="sectorContent" class="max-w-4xl mx-auto border border-slate-900 bg-slate-900/40 rounded-2xl p-6 md:p-10 min-h-[250px] flex flex-col justify-center transition-all duration-300 w-full box-border" data-aos="zoom-in">
+                </div>
+            </div>
+        </section>
+
+        <section id="projetos" class="max-w-6xl mx-auto py-16 px-4 sm:px-6 relative z-10 w-full overflow-hidden">
+            <div class="text-center max-w-2xl mx-auto mb-12 md:mb-20" data-aos="fade-up">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white mb-4" data-i18n="proj-title">Casos de Sucesso</h2>
+                <p class="text-slate-400 text-sm md:text-lg" data-i18n="proj-subtitle">Veja como apliquei os conceitos acima. Clique para abrir las métricas completas obtidas.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 w-full">
+                <div onclick="openModal('proj1')" class="group bg-slate-900/40 rounded-2xl overflow-hidden border border-slate-900 hover:border-indigo-500/30 hover:bg-slate-900/80 transition-all duration-300 cursor-pointer w-full box-border" data-aos="fade-right">
+                    <div class="h-48 sm:h-56 overflow-hidden relative w-full">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="Dashboard de negócios" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-slate-950/20 mix-blend-multiply"></div>
+                    </div>
+                    <div class="p-5 md:p-6 space-y-4">
+                        <span class="inline-block text-[10px] md:text-xs font-bold uppercase tracking-widest text-indigo-400 bg-indigo-500/10 border border-indigo-500/20 px-2 py-0.5 rounded" data-i18n="proj-1-tag">E-Commerce & Automação</span>
+                        <h3 class="text-base sm:text-lg md:text-xl font-bold text-white group-hover:text-indigo-400 transition-colors" data-i18n="proj-1-title">Plataforma Logística para PME</h3>
+                        <p class="text-slate-400 text-xs sm:text-sm md:text-base leading-relaxed" data-i18n="proj-1-desc">Redução de 50% no tempo de gestão através da centralização de estoque automatizado.</p>
+                    </div>
+                </div>
+
+                <div onclick="openModal('proj2')" class="group bg-slate-900/40 rounded-2xl overflow-hidden border border-slate-900 hover:border-purple-500/30 hover:bg-slate-900/80 transition-all duration-300 cursor-pointer w-full box-border" data-aos="fade-left">
+                    <div class="h-48 sm:h-56 overflow-hidden relative w-full">
+                        <img src="./img/landingpage.png" alt="lending page" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-slate-950/20 mix-blend-multiply"></div>
+                    </div>
+                    <div class="p-5 md:p-6 space-y-4">
+                        <span class="inline-block text-[10px] md:text-xs font-bold uppercase tracking-widest text-purple-400 bg-purple-500/10 border border-purple-500/20 px-2 py-0.5 rounded" data-i18n="proj-2-tag">Conversão & Leads</span>
+                        <h3 class="text-base sm:text-lg md:text-xl font-bold text-white group-hover:text-purple-400 transition-colors" data-i18n="proj-2-title">Landing Page de Alta Conversão</h3>
+                        <p class="text-slate-400 text-xs sm:text-sm md:text-base leading-relaxed" data-i18n="proj-2-desc">Estrutura leve e botões de ação rápidos que aumentaram o contato de clientes via WhatsApp.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="sobre-mi" class="bg-gradient-to-b from-slate-950/40 to-slate-900/40 py-16 md:py-24 px-4 sm:px-6 border-t border-slate-900 relative z-10 w-full overflow-hidden">
+            <div class="max-w-4xl mx-auto grid grid-cols-1 gap-12 items-center w-full">
+                <div class="space-y-6 text-center" data-aos="zoom-in">
+                    <div class="w-14 h-14 md:w-16 md:h-16 mx-auto rounded-full bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400 text-2xl">
+                        <i class="fa-solid fa-user-shield"></i>
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold text-white" data-i18n="gar-title">Contato direto com quem resolve.</h2>
+                    <p class="text-slate-400 text-sm sm:text-base md:text-xl max-w-3xl mx-auto leading-relaxed" data-i18n="gar-desc">
+                        Como dono e desenvolvedor independente, eu assumo a responsabilidade total pela qualidade técnica do seu projeto. Você terá comunicação limpa, sem intermediários ou gerentes que atrasam o processo.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto" class="border-t border-slate-900 bg-slate-950/30 py-16 md:py-24 px-4 sm:px-6 relative z-10 w-full overflow-hidden">
+            <div class="max-w-3xl mx-auto text-center space-y-8 z-10 w-full" data-aos="fade-up">
+                <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold text-white" data-i18n="ct-title">Grandes resultados começam com grandes soluções.</h2>
+                
+                <div class="flex flex-col sm:flex-row justify-center gap-4 max-w-2xl mx-auto pt-4 text-sm sm:text-base md:text-lg w-full box-border">
+                    <a href="https://wa.me/+5519995149370" target="_blank" rel="noopener noreferrer" class="flex-1 bg-emerald-600 text-white px-4 py-3.5 rounded-xl font-semibold hover:bg-emerald-500 hover:scale-[1.03] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2 shadow-xl">
+                        <i class="fa-brands fa-whatsapp text-lg sm:text-xl"></i> <span data-i18n="ct-wp">WhatsApp Directo</span>
+                    </a>
+                    
+                    <a href="mailto:joshetoby026@gmail.com?subject=Contato%20-%20Desenvolvimento%20Web" class="flex-1 bg-indigo-600 text-white px-4 py-3.5 rounded-xl font-semibold hover:bg-indigo-500 hover:scale-[1.03] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2 shadow-xl">
+                        <i class="fa-solid fa-envelope text-lg sm:text-xl"></i> <span data-i18n="ct-mail">Enviar E-mail</span>
+                    </a>
+
+                    <a href="https://linkedin.com/in/josetovar-v" target="_blank" rel="noopener noreferrer" class="flex-1 bg-slate-900 border border-slate-800 text-white px-4 py-3.5 rounded-xl font-semibold hover:bg-slate-800 hover:scale-[1.03] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2 shadow-xl">
+                        <i class="fa-brands fa-linkedin text-lg sm:text-xl text-blue-400"></i> <span data-i18n="ct-li">Perfil Profissional</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="infoModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-xl w-full p-6 md:p-8 relative transform scale-95 transition-transform duration-300 space-y-4">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white transition-colors text-lg">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="modalHeader"></div>
+            <h3 id="modalTitle" class="text-xl md:text-3xl font-bold text-white"></h3>
+            <div id="modalBody" class="text-slate-300 text-xs sm:text-sm md:text-base leading-relaxed space-y-3"></div>
+        </div>
+    </div>
+
+    <!-- Contenedor overflow-hidden con contención estricta para garantizar cero desbordamiento -->
+    <footer class="relative overflow-hidden bg-slate-950 text-slate-500 border-t border-slate-900 py-12 px-4 sm:px-6 z-10 w-full max-w-full">
+        <div class="absolute top-0 right-0 h-[1px] w-40 bg-gradient-to-r from-transparent via-indigo-500 to-transparent opacity-70 animate-laser-glow"></div>
+
+        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-6 text-xs md:text-sm text-center sm:text-left w-full">
+            <p>&copy; 2026 <span data-i18n="footer-text">tovartechnology. todos os dereitos reservados.</span></p>
+        </div>
+    </footer>
+
+    <style>
+        /* Corrección del overflow-x producido por la animación traducida a 0% / -100% contenido en width */
+        @keyframes laserGlow {
+            0% { transform: translateX(100vw); }
+            100% { transform: translateX(-100vw); }
+        }
+        .animate-laser-glow { animation: laserGlow 7s linear infinite; }
+    </style>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ 
+            once: true,
+            disableMutationObserver: false
+        });
+
+        let currentLang = 'pt';
+        const translations = {
+            pt: {
+                "nav-solucoes": "O que eu faço", "nav-vantagens": "Vantagens", "nav-setores": "Setores", "nav-contato": "Contato",
+                "hero-badge": "Disponível para novos projetos", "hero-title1": "Desenvolvimento web estratégico para", "hero-title2": "empresas que desejam crescer no ambiente digital",
+                "hero-desc": "Crio sites rápidos, modernos e personalizados, projetados para fortalecer sua marca, gerar mais oportunidades de negócio e oferecer uma excelente experiência aos seus clientes.",
+                "hero-btn1": "Ver O Que Eu Faço", "hero-btn2": "Vamos falar de negócios", "hero-role": "Desenvolvedor Web",
+                "sol-title": "Soluções Digitais de Alta Performance", "sol-subtitle": "Entenda como posso ajudar o seu negócio a crescer. Clique em um dos blocos para ver mais detalhes.", "sol-expand": "Clique para expandir informações",
+                "sol-pme-title": "Para Pequenas e Médias Empresas (PMEs)", "sol-pme-desc": "Focado em aumentar suas vendas diárias, atrair clientes na sua região e criar uma imagem altamente profissional para o seu negócio na internet.", "sol-pme-action": "Ver como funciona",
+                "sol-corp-title": "Para Grandes Empresas e Corporações", "sol-corp-desc": "Sistemas personalizados e seguros que aguentam milhares de acessos simultâneos e se conectam perfeitamente com as ferramentas que sua empresa já usa.", "sol-corp-action": "Ver benefícios estratégicos",
+                "sol-ia-title": "Automação com Inteligência Artificial", "sol-ia-desc": "Seus clientes atendidos 24 horas por dia, tirando dúvidas de forma humana, capturando contatos e fechando vendas no piloto automático.", "sol-ia-action": "Ver funcionamento prático",
+                "van-badge": "O Diferencial Comercial", "van-title": "Vantagens Reais para o Seu Negócio", "van-subtitle": "Contratar um programador web especialista traz benefícios financeiros diretos para sua estrutura.",
+                "van-1-title": "Performance Otimizada", "van-1-desc": "Desenvolvo páginas leves aplicando boas práticas de carregamento, garantindo uma navegação fluida para que o usuário não abandone o site por impaciência.",
+                "van-2-title": "Resposta Imediata", "van-2-desc": "Seu cliente não quer esperar. No ambiente digital, lentidão no atendimento significa perder vendas para a concorrência. Desenvolvo soluções focadas em agilidade para não deixar seu cliente esperando.",
+                "van-3-title": "Segurança de Dados", "van-3-desc": "Proteção total contra vulnerabilidades na web. Desenvolvo sistemas aplicando criptografia e sanitização estrita de dados.",
+                "van-4-title": "Código Limpo", "van-4-desc": "Escrevo código limpo e padronizado. Isso significa que o software poderá receber novas funções futuras sem precisar ser refeito do zero.",
+                "set-badge": "Soluções Sob Medida", "set-title": "Setores em que Atuo", "set-subtitle": "Clique em cada setor para ver o tipo de plataforma estratégica que desenvolvo para o seu nicho comercial.",
+                "btn-setor-1": "Restaurantes & Pizzarias", "btn-setor-2": "Barbearias & Estética", "btn-setor-3": "Petshops & Clínicas", "btn-setor-4": "Lojas & Pequenos Comércios",
+                "proj-title": "Casos de Sucesso", "proj-subtitle": "Veja como apliquei os conceitos acima. Clique para abrir as métricas completas obtidas.",
+                "proj-1-tag": "E-Commerce & Automação", "proj-1-title": "Plataforma Logística para PME", "proj-1-desc": "Redução de 50% no tempo de gestão através da centralização de estoque automatizado.",
+                "proj-2-tag": "Conversão & Leads", "proj-2-title": "Landing Page de Alta Conversão", "proj-2-desc": "Estrutura leve e botões de ação rápidos que aumentaram o contato de clientes via WhatsApp.",
+                "gar-title": "Contato direto com quem resolve.", "gar-desc": "Como dono e desenvolvedor independente, eu assumo a responsabilidade total pela qualidade técnica do seu projeto. Você terá comunicação limpa, sem intermediários ou gerentes que atrasam o processo.",
+                "ct-title": "Vamos construir a sua próxima solução web?", 
+                "ct-wp": "WhatsApp Directo", 
+                "ct-mail": "Enviar E-mail", 
+                "ct-li": "Perfil Profissional", 
+                "footer-text": "tovartechnology. todos os dereitos reservados"
+            },
+            es: {
+                "nav-solucoes": "Lo que hago", "nav-vantagens": "Ventajas", "nav-setores": "Sectores", "nav-contato": "Contacto",
+                "hero-badge": "Disponible para nuevos proyectos", "hero-title1": "Desarrollo web estratégico para", "hero-title2": "empresas que desean crecer en el entorno digital",
+                "hero-desc": "Creo sitios rápidos, modernos y personalizados, diseñados para fortalecer tu marca, generar más oportunidades de negocio y ofrecer una excelente experiencia a tus clientes.",
+                "hero-btn1": "Ver Lo Que Hago", "hero-btn2": "Vamos a hablar de negocios", "hero-role": "Desarrollador Web",
+                "sol-title": "Soluciones Digitales de Alto Rendimiento", "sol-subtitle": "Entiende cómo posso ayudar a tu negocio a crecer. Haz clic en un bloque para ver más detalles.", "sol-expand": "Haz clic para expandir información",
+                "sol-pme-title": "Para Pequeñas y Medianas Empresas (PMEs)", "sol-pme-desc": "Enfocado en aumentar tus ventas diarias, atraer clientes de tu región y crear una imagen altamente profesional para tu negocio en internet.", "sol-pme-action": "Ver cómo funciona",
+                "sol-corp-title": "Para Grandes Empresas y Corporaciones", "sol-corp-desc": "Sistemas personalizados y seguros que soportan miles de visitas simultáneas y se conectan perfectamente con las herramientas que tu empresa ya usa.", "sol-corp-action": "Ver beneficios estratégicos",
+                "sol-ia-title": "Automatización con Inteligencia Artificial", "sol-ia-desc": "Tus clientes atendidos las 24 horas del día, respondiendo preguntas de forma humana, guardando contactos y cerrando ventas en piloto automático.", "sol-ia-action": "Ver funcionamiento práctico",
+                "van-badge": "El Diferencial Comercial", "van-title": "Ventajas Reales para tu Negocio", "van-subtitle": "Contratar a un programador web especialista trae beneficios financieros directos a tu estructura.",
+                "van-1-title": "rendimiento optimizado", "van-1-desc": "Desarrollo páginas ligeras aplicando buenas prácticas de carga, convirtiendo la navegación fluida para que el usuario no abandone el sitio.",
+                "van-2-title": "Respuesta Inmediata", "van-2-desc": "Tu cliente no quiere esperar. En el entorno digital, la lentitud en la atención significa perder ventas con la competencia. Desarrollo soluciones ágiles.",
+                "van-3-title": "Seguridad de Datos", "van-3-desc": "Protección total contra vulnerabilidades web. Desarrollo sistemas aplicando criptografía y sanitización estricta de datos.",
+                "van-4-title": "Código Limpio", "van-4-desc": "Escribo código limpio y estandarizado. Esto significa que el software podrá recibir nuevas funciones futuras sin necesidad de rehacerlo desde cero.",
+                "set-badge": "Soluciones a Medida", "set-title": "Sectores en los que Actúo", "set-subtitle": "Haz clic en cada sector para ver el tipo de plataforma estratégica que desarrollo para tu nicho comercial.",
+                "btn-setor-1": "Restaurantes y Pizzerías", "btn-setor-2": "Barberías y Estética", "btn-setor-3": "Petshops y Clínicas", "btn-setor-4": "Tiendas y Pequeños Comercios",
+                "proj-title": "Casos de Éxito", "proj-subtitle": "Mira cómo apliqué los conceptos anteriores. Haz clic para abrir las métricas completas obtenidas.",
+                "proj-1-tag": "E-Commerce y Automatización", "proj-1-title": "Plataforma Logística para PME", "proj-1-desc": "Reducción del 50% en el tiempo de gestión mediante la centralización de inventario automatizado.",
+                "proj-2-tag": "Conversión y Leads", "proj-2-title": "Landing Page de Alta Conversión", "proj-2-desc": "Estructura ligera y botones de acción rápidos que aumentaron el contacto de clientes vía WhatsApp.",
+                "gar-title": "Contacto directo con quien resuelve.", "gar-desc": "Como dueño y desarrollador independiente, asumo la responsabilidad total por la calidad técnica de tu proyecto. Tendrás comunicación limpia, sin intermediarios.",
+                "ct-title": "¿Vamos a construir tu próxima solución web?", 
+                "ct-wp": "WhatsApp Directo", 
+                "ct-mail": "Enviar Correo", 
+                "ct-li": "Perfil Profesional", 
+                "footer-text": "tovartechnology. todos los derechos reservados"
+            },
+            en: {
+                "nav-solucoes": "What I do", "nav-vantagens": "Advantages", "nav-setores": "Sectors", "nav-contato": "Contact",
+                "hero-badge": "Available for new projects", "hero-title1": "Strategic web development for", "hero-title2": "companies that want to grow in the digital environment",
+                "hero-desc": "I create fast, modern, and customized websites designed to strengthen your brand, generate more business opportunities, and offer an excellent experience to your customers.",
+                "hero-btn1": "See What I Do", "hero-btn2": "Let's talk business", "hero-role": "Web Developer",
+                "sol-title": "High-Performance Digital Solutions", "sol-subtitle": "Understand how I can help your business grow. Click on a block to see more details.", "sol-expand": "Click to expand information",
+                "sol-pme-title": "For Small and Medium Enterprises (SMEs)", "sol-pme-desc": "Focused on increasing your daily sales, attracting local customers, and building a highly professional online presence for your business.", "sol-pme-action": "See how it works",
+                "sol-corp-title": "For Large Companies and Corporations", "sol-corp-desc": "Customized and secure systems that handle thousands of simultaneous visits and connect seamlessly with the tools your company already uses.", "sol-corp-action": "See strategic benefits",
+                "sol-ia-title": "Automation with Artificial Intelligence", "sol-ia-desc": "Your customers served 24/7, answering questions in a human-like manner, capturing leads, and closing sales completely on autopilot.", "sol-ia-action": "See practical workflow",
+                "van-badge": "The Commercial Edge", "van-title": "Real Advantages for Your Business", "van-subtitle": "Hiring a specialized web developer brings direct financial benefits to your structure.",
+                "van-1-title": "optimized performance", "van-1-desc": "I build lightweight pages applying modern loading best practices, ensuring a smooth user experience.",
+                "van-2-title": "Instant Response", "van-2-desc": "Your customer doesn't want to wait. In the digital world, slow customer service means losing sales to competitors. I develop fast-response solutions.",
+                "van-3-title": "Data Security", "van-3-desc": "Total protection against web vulnerabilities. I develop systems applying encryption and strict data sanitization.",
+                "van-4-title": "Clean Code", "van-4-desc": "I write clean and standardized code. This means the software can easily receive future features without being rebuilt from scratch.",
+                "set-badge": "Tailored Solutions", "set-title": "Sectors I Serve", "set-subtitle": "Click on each sector to see the strategic platform type I develop for your business niche.",
+                "btn-setor-1": "Restaurants & Pizzerias", "btn-setor-2": "Barbershops & Aesthetics", "btn-setor-3": "Petshops & Clinics", "btn-setor-4": "Shops & Small Businesses",
+                "proj-title": "Success Cases", "proj-subtitle": "See how I applied the concepts above. Click to open the full metrics obtained.",
+                "proj-1-tag": "E-Commerce & Automation", "proj-1-title": "Logistics Platform for SME", "proj-1-desc": "50% reduction in management time through centralized automated inventory.",
+                "proj-2-tag": "Conversion & Leads", "proj-2-title": "High-Converting Landing Page", "proj-2-desc": "Lightweight structure and fast action buttons that increased client contact via WhatsApp.",
+                "gar-title": "Direct contact with the one who solves it.", "gar-desc": "As an owner and independent developer, I take full responsibility for the technical quality of your project. You will have direct and clean communication.",
+                "ct-title": "Let's build your next web solution?", 
+                "ct-wp": "Direct WhatsApp", 
+                "ct-mail": "Send Email", 
+                "ct-li": "Professional Profile", 
+                "footer-text": "tovartechnology. All rights reserved "
+            }
+        };
+
+        let currentSectorKey = 'alimentacao';
+
+        function changeLanguage(lang) {
+            currentLang = lang;
+            document.documentElement.lang = lang === 'pt' ? 'pt-BR' : lang === 'es' ? 'es-ES' : 'en-US';
+            
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    element.innerText = translations[lang][key];
+                }
+            });
+
+            switchSector(currentSectorKey, null);
+            updateModalDetails();
+        }
+
+        function switchSector(key, button) {
+            currentSectorKey = key;
+            const data = sectorData[currentLang][key];
+            if(!data) return;
+
+            if(button) {
+                document.querySelectorAll('.sector-btn').forEach(btn => {
+                    btn.classList.remove('border-indigo-500', 'bg-indigo-600/10', 'text-indigo-400');
+                    btn.classList.add('border-slate-800', 'bg-slate-900/50', 'text-slate-400');
+                });
+                button.classList.remove('border-slate-800', 'bg-slate-900/50', 'text-slate-400');
+                button.classList.add('border-indigo-500', 'bg-indigo-600/10', 'text-indigo-400');
+            }
+
+            const container = document.getElementById('sectorContent');
+            container.style.opacity = 0;
+            
+            setTimeout(() => {
+                let bulletsHtml = data.bullets.map(b => `<div class="flex items-center"><i class="fa-regular fa-circle-check mr-2 shrink-0"></i> <span>${b}</span></div>`).join('');
+                
+                container.innerHTML = `
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center w-full">
+                        <div class="md:col-span-8 space-y-4">
+                            <h3 class="text-xl md:text-3xl font-bold text-white">${data.title}</h3>
+                            <p class="text-slate-400 text-xs sm:text-sm md:text-base leading-relaxed">${data.desc}</p>
+                        </div>
+                        <div class="md:col-span-4 flex flex-col gap-2 border-t md:border-t-0 md:border-l border-slate-800 pt-4 md:pt-0 md:pl-6 text-xs sm:text-sm md:text-base text-indigo-400 font-medium">
+                            ${bulletsHtml}
+                        </div>
+                    </div>
+                `;
+                container.style.opacity = 1;
+            }, 150);
+        }
+
+        const sectorData = {
+            pt: {
+                alimentacao: { title: 'Sistemas de Cardápio e Delivery Direto', desc: 'Desenvolvo Landing Pages de alta conversão e Menús Digitais interativos integrados diretamente com o WhatsApp. Livre-se de taxas abusivas de aplicativos terceiros e tenha o controle total dos seus pedidos online.', bullets: ['Landing Pages de Impacto', 'Cardápios Online Rápidos', 'Integração com WhatsApp'] },
+                estetica: { title: 'Páginas de Agendamento e Atração', desc: 'Sites focados em Salões de Beleza, Barbearias e Clínicas de Estética. Desenvolvo a estrutura perfeita para exibir seus melhores trabalhos, listar serviços e integrar botões inteligentes de agendamento que reduzem o tempo ocioso.', bullets: ['Sistemas de Agendamento', 'Portfólio de Resultados', 'Botões de Contato Direto'] },
+                pet: { title: 'Plataformas para Clínicas e Petshops', desc: 'Exiba seus planos de saúde animal, serviços de banho e tosa, e facilite o contato de tutores preocupados. Páginas leves, otimizadas para o Google local para que sua clínica seja encontrada rapidamente na sua região.', bullets: ['Exibição de Serviços', 'SEO Local para Cidades', 'Captação de Clientes'] },
+                comercio: { title: 'Catálogos Digitais e Lojas para Pequenos Comércios', desc: 'Desenvolvo sites e catálogos modernos para pequenas lojas de roupas, autopeças ou comércios em geral. O cliente navega pelos seus produtos no computador ou celular de forma rápida e fecha o pedido de forma organizada.', bullets: ['Catálogos de Produtos', 'Design Responsivo Premium', 'Foco em Vendas Locais'] }
+            },
+            es: {
+                alimentacao: { title: 'Sistemas de Menú y Delivery Directo', desc: 'Desarrollo Landing Pages de alta conversión y Menús Digitales interactivos integrados directamente con WhatsApp. Libérate de comisiones abusivas de apps de terceros y toma el control total de tus pedidos online.', bullets: ['Landing Pages de Impacto', 'Menús Online Rápidos', 'Integración con WhatsApp'] },
+                estetica: { title: 'Páginas de Reserva y Atracción', desc: 'Sitios enfocados en Salones de Belleza, Barberías y Clínicas de Estética. Desarrollo la estructura perfecta para mostrar tus mejores trabajos, listar servicios e integrar botones inteligentes de reserva.', bullets: ['Sistemas de Reserva', 'Portafolio de Resultados', 'Botones de Contacto Directo'] },
+                pet: { title: 'Plataformas para Clínicas y Petshops', desc: 'Muestra tus planes de salud animal, servicios de peluquería y facilita el contacto. Páginas ligeras, optimizadas para Google local para que encuentren tu clínica rápidamente.', bullets: ['Exhibición de Servicios', 'SEO Local para Ciudades', 'Captación de Clientes'] },
+                comercio: { title: 'Catálogos Digitais y Tiendas para Pequeños Comercios', desc: 'Desarrollo sitios y catálogos modernos para pequeñas tiendas de ropa, repuestos o comercios en general. El cliente navega de forma rápida desde su celular y cierra el pedido de forma organizada.', bullets: ['Catálogos de Productos', 'Diseño Responsivo Premium', 'Enfoque en Ventas Locales'] }
+            },
+            en: {
+                alimentacao: { title: 'Menu Systems and Direct Delivery', desc: 'I develop high-converting Landing Pages and interactive Digital Menus integrated directly with WhatsApp. Get rid of abusive third-party app fees and take full control of your online orders.', bullets: ['Impactful Landing Pages', 'Fast Online Menus', 'WhatsApp Integration'] },
+                estetica: { title: 'Booking and Attraction Pages', desc: 'Websites focused on Beauty Salons, Barbershops, and Aesthetics Clinics. I develop the perfect structure to display your best work, list services, and integrate smart booking buttons.', bullets: ['Booking Systems', 'Results Portfolio', 'Direct Contact Buttons'] },
+                pet: { title: 'Platforms for Clinics and Petshops', desc: 'Display your animal health plans, grooming services, and facilitate contact. Lightweight pages, optimized for local Google searches so your clinic can be found quickly.', bullets: ['Services Display', 'Local SEO for Cities', 'Client Acquisition'] },
+                comercio: { title: 'Digital Catalogs and Shops for Small Businesses', desc: 'I develop modern websites and catalogs for small clothing stores, auto parts, or general businesses. Customers browse quickly on desktop or mobile and place orders in an organized way.', bullets: ['Product Catalogs', 'Premium Responsive Design', 'Local Sales Focus'] }
+            }
+        };
+
+        let dataDetails = {};
+        function updateModalDetails() {
+            if (currentLang === 'pt') {
+                dataDetails = {
+                    pme: { icon: '<i class="fa-solid fa-store text-indigo-400 text-3xl"></i>', title: 'Soluções para PMEs', body: '<p><b>Objetivo principal:</b> Trazer mais clientes e aumentar o faturamento do seu negócio.</p><p><b>Como funciona:</b> Desenvolvo páginas extremamente rápidas que abrem instantaneamente no celular do cliente. Configuro o site para aparecer nas buscas do Google na sua cidade e coloco botões de contato diretos para o seu WhatsApp, evitando que você dependa ou pague taxas abusivas para aplicativos terceiros.</p>' },
+                    corp: { icon: '<i class="fa-solid fa-building text-purple-400 text-3xl"></i>', title: 'Soluções Corporativas', body: '<p><b>Foco operacional:</b> Segurança máxima, estabilidade e organização.</p><p><b>Como funciona:</b> Entrego sistemas sob medida preparados para crescer junto com a empresa. O site nunca fica lento ou fora do ar, mesmo com milhares de acessos ao mesmo tempo. Além disso, todos os dados ficam protegidos contra invasões e integrados aos sistemas de gestão que sua empresa já utiliza.</p>' },
+                    ia: { icon: '<i class="fa-solid fa-robot text-emerald-400 text-3xl"></i>', title: 'Atendimento e Automação com IA', body: '<p><b>Foco comercial:</b> Atendimento ao cliente imediato e sem pausas.</p><p><b>Como funciona:</b> Conectamos um assistente inteligente ao seu site ou WhatsApp. Ele aprende tudo sobre o seu negócio and atende seus clientes respondendo dúvidas frequentes na hora, de dia ou de madrugada. Ele salva os contatos dos interessados de forma organizada para que sua equipe comercial feche a venda.</p>' },
+                    proj1: { icon: '<i class="fa-solid fa-chart-pie text-emerald-400 text-3xl"></i>', title: 'Métricas: Plataforma Logística PME', body: '<p><b>Tecnologias:</b> Node.js, Express, React, PostgreSQL.</p><p><b>Resultados obtidos:</b> O sistema unificou o fluxo de controle de faturamento em uma interface reativa de carregamento assíncrono. Reduziu erros de contagem manual em 50% e integrou avisos automáticos via webhook, trazendo agilidade direto ao estoque do cliente.</p>' },
+                    proj2: { icon: '<i class="fa-solid fa-laptop-code text-amber-400 text-3xl"></i>', title: 'Performance: Landing Page de Alta Conversão', body: '<p><b>Tecnologias:</b> HTML5, Tailwind CSS, Alpine.js (ou JavaScript).</p><p><b>Resultados obtidos:</b> Desenvolvimento de uma página focada em capturar leads e agendamentos. Estrutura leve e botões de ação rápidos que aumentaram o contato de clientes via WhatsApp.</p>' }
+                };
+            } else if (currentLang === 'es') {
+                dataDetails = {
+                    pme: { icon: '<i class="fa-solid fa-store text-indigo-400 text-3xl"></i>', title: 'Soluciones para PMEs', body: '<p><b>Objetivo principal:</b> Atraer más clientes y aumentar los ingresos de tu negocio.</p><p><b>Cómo funciona:</b> Desarrollo páginas extremadamente rápidas que abren al instante en el celular. Configuro el sitio para aparecer en Google en tu ciudad y añado botones directos a tu WhatsApp, evitando intermediarios y comisiones.</p>' },
+                    corp: { icon: '<i class="fa-solid fa-building text-purple-400 text-3xl"></i>', title: 'Soluciones Corporativas', body: '<p><b>Enfoque:</b> Seguridad máxima, estabilidad y organización.</p><p><b>Cómo funciona:</b> Entrego sistemas a medida listo para crecer con tu empresa. El sitio nunca se cae ni se pone lento, protegiendo todos los datos de tu negocio y conectándose con las herramientas que ya usas actualmente.</p>' },
+                    ia: { icon: '<i class="fa-solid fa-robot text-emerald-400 text-3xl"></i>', title: 'Atención y Automatización con IA', body: '<p><b>Beneficio:</b> Atención al cliente inmediata y sin pausas.</p><p><b>Cómo funciona:</b> Conectamos un asistente inteligente a tu web o WhatsApp. Responde dudas frecuentes al instante las 24 horas de forma natural y guarda los datos de los clientes interesados de manera organizada.</p>' },
+                    proj1: { icon: '<i class="fa-solid fa-chart-pie text-emerald-400 text-3xl"></i>', title: 'Métricas: Plataforma Logística para PMEs', body: '<p><b>Tecnologías:</b> Node.js, Express, React, PostgreSQL.</p><p><b>Resultados:</b> Unificó el flujo de facturación. Redujo errores manuales en un 50% e integró alertas automatizadas vía webhooks.</p>' },
+                    proj2: { icon: '<i class="fa-solid fa-laptop-code text-amber-400 text-3xl"></i>', title: 'Rendimiento: Landing Page de Alta Conversión', body: '<p><b>Tecnologías:</b> HTML5, Tailwind CSS, Alpine.js (or JavaScript).</p><p><b>Resultados:</b> Desarrollo de una página enfocada en capturar leads y reservas. Estructura ligera y botones de acción rápidos que aumentaron el contacto de clientes vía WhatsApp.</p>' }
+                };
+            } else if (currentLang === 'en') {
+                dataDetails = {
+                    pme: { icon: '<i class="fa-solid fa-store text-indigo-400 text-3xl"></i>', title: 'Solutions for SMEs', body: '<p><b>Main Objective:</b> Attract more customers and increase your business revenue.</p><p><b>How it works:</b> I develop extremely fast websites that open instantly on mobile. I optimize it to appear on local Google searches and set up direct WhatsApp buttons so you do not depend on third-party apps.</p>' },
+                    corp: { icon: '<i class="fa-solid fa-building text-purple-400 text-3xl"></i>', title: 'Enterprise Solutions', body: '<p><b>Focus:</b> Maximum security, stability, and workflow organization.</p><p><b>How it works:</b> Tailored systems ready to grow with your company. The website will handle thousands of simultaneous visits without slowing down, keeping data completely secure and integrated with your current software.</p>' },
+                    ia: { icon: '<i class="fa-solid fa-robot text-emerald-400 text-3xl"></i>', title: 'AI Automation & Support', body: '<p><b>Benefit:</b> Immediate and non-stop customer support.</p><p><b>How it works:</b> We integrate a smart assistant into your website or WhatsApp. It answers frequent questions instantly 24/7 in a human-like way, saving lead information automatically for your sales team.</p>' },
+                    proj1: { icon: '<i class="fa-solid fa-chart-pie text-emerald-400 text-3xl"></i>', title: 'Metrics: SME Logistics Platform', body: '<p><b>Tech Stack:</b> Node.js, Express, React, PostgreSQL.</p><p><b>Resultados:</b> Centralized billing management with asynchronous UI. Reduced manual counting errors by 50% and integrated automated webhook alerts.</p>' },
+                    proj2: { icon: '<i class="fa-solid fa-laptop-code text-amber-400 text-3xl"></i>', title: 'Performance: High-Converting Landing Page', body: '<p><b>Tech Stack:</b> HTML5, Tailwind CSS, Alpine.js (or JavaScript).</p><p><b>Results:</b> Development of a page focused on capturing leads and bookings. Lightweight structure and fast action buttons that increased client contact via WhatsApp.</p>' }
+                };
+            }
+        }
+
+        function openModal(key) {
+            const data = dataDetails[key];
+            if(!data) return;
+
+            document.getElementById('modalHeader').innerHTML = data.icon;
+            document.getElementById('modalTitle').innerText = data.title;
+            document.getElementById('modalBody').innerHTML = data.body;
+
+            const modal = document.getElementById('infoModal');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modal.querySelector('div').classList.remove('scale-95');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('infoModal');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            modal.querySelector('div').classList.add('scale-95');
+        }
+
+        switchSector('alimentacao', document.querySelector('.sector-btn'));
+        updateModalDetails();
+
+        // --- EFECTO DE ESTRELLAS 3D EN PERSPECTIVA (STARFIELD INTEGRADO ESTILO GITHUB) ---
+        const canvas = document.getElementById('starsCanvas');
+        const ctx = canvas.getContext('2d');
+
+        let stars = [];
+        const numStars = 250; 
+        const maxDepth = 1000; 
+        
+        const mouse = { x: 0, y: 0, targetX: 0, targetY: 0 };
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            initStars();
+        }
+
+        class Star {
+            constructor() {
+                this.reset();
+                this.z = Math.random() * maxDepth;
+            }
+
+            reset() {
+                this.x = (Math.random() - 0.5) * canvas.width * 2;
+                this.y = (Math.random() - 0.5) * canvas.height * 2;
+                this.z = maxDepth;
+                this.speedZ = Math.random() * 3 + 1; 
+                this.baseOpacity = Math.random() * 0.4 + 0.6; 
+            }
+
+            update() {
+                this.z -= this.speedZ;
+                if (this.z <= 0) {
+                    this.reset();
+                }
+            }
+
+            draw() {
+                const centerX = canvas.width / 2 + mouse.x;
+                const centerY = canvas.height / 2 + mouse.y;
+
+                const fov = 400; 
+                const screenX = (this.x / this.z) * fov + centerX;
+                const screenY = (this.y / this.z) * fov + centerY;
+
+                const size = (1 - this.z / maxDepth) * 2.8 + 0.2;
+
+                if (screenX < 0 || screenX > canvas.width || screenY < 0 || screenY > canvas.height) {
+                    return;
+                }
+
+                let opacity = this.baseOpacity;
+                if (this.z > maxDepth * 0.8) {
+                    opacity *= (maxDepth - this.z) / (maxDepth * 0.2);
+                }
+
+                ctx.beginPath();
+                ctx.arc(screenX, screenY, size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(224, 231, 255, ${opacity})`; 
+                ctx.fill();
+            }
+        }
+
+        function initStars() {
+            stars = [];
+            for (let i = 0; i < numStars; i++) {
+                stars.push(new Star());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            mouse.x += (mouse.targetX - mouse.x) * 0.05;
+            mouse.y += (mouse.targetY - mouse.y) * 0.05;
+
+            for (let i = 0; i < stars.length; i++) {
+                stars[i].update();
+                stars[i].draw();
+            }
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('mousemove', (e) => {
+            mouse.targetX = (e.clientX - window.innerWidth / 2) * 0.12;
+            mouse.targetY = (e.clientY - window.innerHeight / 2) * 0.12;
+        });
+
+        window.addEventListener('mouseleave', () => {
+            mouse.targetX = 0;
+            mouse.targetY = 0;
+        });
+
+        window.addEventListener('resize', resizeCanvas);
+
+        resizeCanvas();
+        animate();
+    </script>
+</body>
+</html>
