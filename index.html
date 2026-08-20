@@ -501,17 +501,17 @@
                 <p class="text-xs text-indigo-400 font-medium mt-0.5">José Tovar • Programador Web</p>
             </div>
 
-            <div class="space-y-4 text-slate-300 text-xs sm:text-sm leading-relaxed">
-                <p>Sou programador especializado no desenvolvimento de soluções web focadas em necessidades reais de negócios e em uma presença digital profissional.</p>
-                <div>
-                    <h4 class="font-semibold text-white mb-1 text-sm">Trajetória e transição</h4>
-                    <p class="text-slate-400">Depois de adquirir experiência prática na área técnica e comercial, direcionei minha trajetória para o desenvolvimento de software, unindo precisão técnica a uma visão prática das necessidades de um negócio.</p>
-                </div>
-                <div>
-                    <h4 class="font-semibold text-white mb-1 text-sm">Forma de trabalhar</h4>
-                    <p class="text-slate-400">Valorizo a comunicação direta, a transparência e o cumprimento dos prazos acordados. Cada projeto é desenvolvido buscando bom desempenho, segurança e uma experiência de navegação clara.</p>
-                </div>
-            </div>
+    <div class="space-y-4 text-slate-300 text-xs sm:text-sm md:text-base leading-relaxed">
+    <p>Sou programador independente, especializado no desenvolvimento de soluções web focadas em necessidades reais de negócios e em uma presença digital profissional. Trabalho sem intermediários: do primeiro contato ao código em produção, sou eu quem conduz cada etapa do projeto, o que garante mais agilidade na comunicação e total controle sobre a qualidade da entrega.</p>
+    <div>
+        <h4 class="font-semibold text-white mb-1 text-sm md:text-base">Trajetória e transição</h4>
+        <p class="text-slate-400">Vindo de uma trajetória prática em outra área, decidi direcionar meu caminho para o desenvolvimento de software, unindo disciplina e visão prática de resolução de problemas a uma nova paixão pela tecnologia.</p>
+    </div>
+    <div>
+        <h4 class="font-semibold text-white mb-1 text-sm md:text-base">Forma de trabalhar</h4>
+        <p class="text-slate-400">Valorizo a comunicação direta, a transparência e o cumprimento dos prazos acordados. Cada projeto é desenvolvido buscando bom desempenho, segurança e uma experiência de navegação clara.</p>
+    </div>
+</div>
 
             <div class="pt-2 flex flex-col sm:flex-row justify-end gap-3 border-t border-slate-800">
                 <button onclick="closeAboutModal()" class="px-4 py-2 rounded-lg border border-slate-800 text-slate-400 text-xs hover:text-white transition-colors">Fechar</button>
@@ -521,24 +521,25 @@
     </div>
 
     <!-- FOOTER -->
-  <footer class="bg-slate-950 text-slate-500 border-t border-slate-900 py-10 px-4 sm:px-6 relative z-10 w-full">
-    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 text-xs">
-
-        <!-- Copyright -->
-        <p class="text-center sm:text-left">
-            &copy; 2026 Tovar Technology. Todos os direitos reservados.
-        </p>
-
-        <!-- Marca e especialidade -->
-        <div class="flex items-center gap-2">
-            <span class="font-bold text-slate-300">
-                tovar<span class="text-indigo-500">technology</span>
-            </span>
-            <span class="text-slate-600">•</span>
-            <span>Desenvolvimento Web Profissional</span>
-        </div>
-
+<!-- FOOTER -->
+<footer class="w-full bg-slate-950 border-t border-slate-900 py-8 px-4 text-center z-10 relative">
+  <div class="max-w-6xl mx-auto flex flex-col items-center justify-center gap-4">
+    
+    <!-- 1. PRIMERO: Logo y Subtítulo -->
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-2 text-sm text-slate-400">
+      <span class="font-bold tracking-tight text-white text-base">
+        tovar<span class="text-indigo-500">technology</span>
+      </span>
+      <span class="hidden sm:inline text-slate-600">·</span>
+      <span class="text-xs sm:text-sm text-slate-400">Desenvolvimento Web Profissional</span>
     </div>
+
+    <!-- 2. SEGUNDO: Copyright al final -->
+    <p class="text-xs text-slate-500">
+      © 2026 Tovar Technology. Todos os direitos reservados.
+    </p>
+
+  </div>
 </footer>
 
     <!-- SCRIPTS -->
@@ -653,7 +654,7 @@
                 this.y = (Math.random() - 0.5) * canvas.height * 2;
                 this.z = maxDepth;
                 this.speedZ = Math.random() * 0.8 + 0.2;
-                this.baseOpacity = Math.random() * 0.7 + 0.2;
+                this.baseOpacity = Math.random() * 0.6 + 0.3;
             }
 
             update() {
