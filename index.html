@@ -1,709 +1,440 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="scroll-smooth max-w-full overflow-x-hidden">
+<html lang="pt-BR">
 <head>
-    <!-- FAVICONS & METADATA -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link rel="icon" type="image/png" sizes="32x32" href="./img/logo-tovartechnology-semfondo.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="./img/apple-touch-icon.png">
-    <link rel="manifest" href="./site.webmanifest">
-    <meta name="theme-color" content="#020617">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TovarTechnology | Desenvolvimento Web Profissional</title>
-    
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TovarTechnology | Desenvolvimento Web Profissional</title>
+<meta name="description" content="Sites institucionais, landing pages e plataformas web para pequenas e médias empresas. José Tovar, desenvolvedor web em Louveira - SP.">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" type="image/png" sizes="32x32" href="./img/logo-tovartechnology-semfondo.png">
+<link rel="apple-touch-icon" sizes="180x180" href="./img/apple-touch-icon.png">
+<link rel="manifest" href="./site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+:root{
+  --branco:#ffffff; --gelo:#f5f5f5; --cinza-100:#ebebeb; --cinza-300:#cfcfcf;
+  --cinza-500:#7a7a7a; --cinza-700:#3d3d3d; --preto:#111111;
+  --raio:6px; --largura:1120px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:'Manrope',system-ui,sans-serif;color:var(--cinza-700);background:var(--branco);line-height:1.65;font-size:16px;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--preto);outline-offset:3px}
+.container{width:100%;max-width:var(--largura);margin:0 auto;padding:0 24px}
+section{padding:96px 0}
+.fundo-gelo{background:var(--gelo)}
+h1,h2,h3{color:var(--preto);line-height:1.18;letter-spacing:-.02em}
+h1{font-size:clamp(2.2rem,5.4vw,4rem);font-weight:800;max-width:15em}
+h2{font-size:clamp(1.7rem,3.4vw,2.4rem);font-weight:700}
+h3{font-size:1.1rem;font-weight:700;letter-spacing:-.01em}
+.cabecalho-secao{display:flex;flex-direction:column;gap:12px;max-width:640px;margin-bottom:48px}
+.cabecalho-secao p{color:var(--cinza-500)}
+
+/* BOTÕES */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 26px;border-radius:var(--raio);font-weight:600;font-size:.95rem;border:1px solid var(--preto);cursor:pointer;font-family:inherit;transition:background .2s,color .2s}
+.btn-preto{background:var(--preto);color:var(--branco)}
+.btn-preto:hover{background:var(--cinza-700);border-color:var(--cinza-700)}
+.btn-contorno{background:transparent;color:var(--preto)}
+.btn-contorno:hover{background:var(--preto);color:var(--branco)}
+
+/* CABEÇALHO */
+.topo{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--cinza-100)}
+.topo .container{display:flex;align-items:center;justify-content:space-between;height:72px;gap:16px}
+.marca{font-weight:800;font-size:1.2rem;color:var(--preto);letter-spacing:-.03em}
+.marca span{font-weight:500;color:var(--cinza-500)}
+.menu{display:flex;align-items:center;gap:32px;font-size:.92rem;font-weight:500}
+.menu a:not(.btn){color:var(--cinza-500);transition:color .2s}
+.menu a:not(.btn):hover{color:var(--preto)}
+.menu .btn{padding:10px 20px}
+
+/* HERO */
+.hero{padding:112px 0 96px}
+.hero .container{display:flex;flex-direction:column;gap:28px;align-items:flex-start}
+.hero p{font-size:1.15rem;max-width:34em;color:var(--cinza-500)}
+.hero .acoes{display:flex;flex-wrap:wrap;gap:14px;margin-top:8px}
+.hero .dados{display:flex;flex-wrap:wrap;gap:12px 40px;margin-top:40px;padding-top:28px;border-top:1px solid var(--cinza-100);width:100%;font-size:.92rem}
+.hero .dados div{display:flex;align-items:center;gap:10px;color:var(--cinza-700);font-weight:500}
+.hero .dados i{color:var(--preto)}
+
+/* CARDS COM FLEXBOX */
+.fileira{display:flex;flex-wrap:wrap;gap:24px}
+.card{flex:1 1 300px;display:flex;flex-direction:column;gap:14px;padding:32px;background:var(--branco);border:1px solid var(--cinza-100);border-radius:var(--raio)}
+.fundo-gelo .card{border-color:transparent}
+.card .icone{width:46px;height:46px;display:flex;align-items:center;justify-content:center;background:var(--preto);color:var(--branco);border-radius:var(--raio);font-size:1.05rem}
+.card p{font-size:.95rem;color:var(--cinza-500)}
+.card details{margin-top:auto;padding-top:14px;border-top:1px solid var(--cinza-100);font-size:.92rem}
+.card summary{cursor:pointer;font-weight:600;color:var(--preto);list-style:none;display:flex;justify-content:space-between;align-items:center}
+.card summary::-webkit-details-marker{display:none}
+.card summary::after{content:"+";font-size:1.2rem;font-weight:500}
+.card details[open] summary::after{content:"–"}
+.card details p{margin-top:10px}
+.card-4{flex-basis:220px}
+
+/* SETORES */
+.abas{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px}
+.aba{display:inline-flex;align-items:center;gap:10px;padding:11px 20px;border-radius:var(--raio);border:1px solid var(--cinza-300);background:var(--branco);color:var(--cinza-700);font-family:inherit;font-weight:600;font-size:.9rem;cursor:pointer;transition:all .2s}
+.aba:hover{border-color:var(--preto)}
+.aba.ativa{background:var(--preto);border-color:var(--preto);color:var(--branco)}
+.painel{display:none;gap:40px;flex-wrap:wrap;padding:40px;background:var(--branco);border-radius:var(--raio)}
+.painel.ativo{display:flex}
+.painel .texto{flex:1 1 320px;display:flex;flex-direction:column;gap:12px}
+.painel ul{flex:1 1 280px;list-style:none;display:flex;flex-direction:column;gap:14px}
+.painel li{display:flex;gap:12px;align-items:flex-start;font-size:.95rem}
+.painel li i{color:var(--preto);margin-top:5px;font-size:.8rem}
+
+/* EXEMPLOS */
+.exemplo{flex:1 1 440px;padding:0;overflow:hidden}
+.exemplo figure{height:240px;background:var(--cinza-100);overflow:hidden}
+.exemplo img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.05)}
+.exemplo .corpo{display:flex;flex-direction:column;gap:12px;padding:28px 32px 32px}
+.etiqueta{align-self:flex-start;font-size:.78rem;font-weight:600;padding:4px 12px;border:1px solid var(--cinza-300);border-radius:100px;color:var(--cinza-700)}
+
+/* POR QUE TER UM SITE */
+.comparativo{display:flex;flex-wrap:wrap;gap:24px}
+.bloco{flex:1 1 440px;padding:36px;border-radius:var(--raio);display:flex;flex-direction:column;gap:22px}
+.bloco.claro{background:var(--branco);border:1px solid var(--cinza-300)}
+.bloco.escuro{background:var(--preto);color:var(--cinza-300)}
+.bloco.escuro h3{color:var(--branco)}
+.bloco ul{list-style:none;display:flex;flex-direction:column;gap:16px;font-size:.94rem}
+.bloco li{display:flex;gap:14px;align-items:flex-start}
+.bloco li i{margin-top:5px;font-size:.8rem}
+.bloco li strong{color:var(--preto)}
+.bloco.escuro li strong{color:var(--branco)}
+
+/* PROCESSO */
+.etapas{display:flex;flex-wrap:wrap;gap:24px}
+.etapa{flex:1 1 220px;display:flex;flex-direction:column;gap:12px;padding-top:24px;border-top:2px solid var(--preto)}
+.etapa .num{font-weight:800;color:var(--cinza-500);font-size:.9rem}
+.etapa p{font-size:.94rem;color:var(--cinza-500)}
+
+/* SOBRE */
+.sobre{display:flex;flex-wrap:wrap;gap:56px;align-items:flex-start}
+.sobre .titulo{flex:1 1 300px}
+.sobre .texto{flex:2 1 420px;display:flex;flex-direction:column;gap:16px}
+
+/* FAQ */
+.faq{max-width:820px;display:flex;flex-direction:column}
+.faq details{border-bottom:1px solid var(--cinza-300);padding:22px 0}
+.faq summary{cursor:pointer;font-weight:700;color:var(--preto);list-style:none;display:flex;justify-content:space-between;gap:20px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-weight:500;font-size:1.3rem;line-height:1}
+.faq details[open] summary::after{content:"–"}
+.faq details p{margin-top:12px;color:var(--cinza-500);font-size:.95rem}
+
+/* CONTATO */
+.contato{background:var(--preto);color:var(--cinza-300)}
+.contato .container{display:flex;flex-wrap:wrap;gap:56px;justify-content:space-between}
+.contato .chamada{flex:1 1 360px;display:flex;flex-direction:column;gap:20px;align-items:flex-start}
+.contato h2{color:var(--branco)}
+.contato .btn-preto{background:var(--branco);color:var(--preto);border-color:var(--branco)}
+.contato .btn-preto:hover{background:var(--cinza-100)}
+.contato ul{flex:1 1 300px;list-style:none;display:flex;flex-direction:column}
+.contato li{display:flex;gap:16px;align-items:center;padding:20px 0;border-bottom:1px solid #2c2c2c}
+.contato li:first-child{padding-top:0}
+.contato li i{width:20px;color:var(--branco);text-align:center}
+.contato li small{display:block;color:var(--cinza-500);font-size:.8rem}
+.contato li span{color:var(--branco);font-weight:600}
+
+footer{background:var(--preto);border-top:1px solid #2c2c2c;padding:28px 0;font-size:.85rem;color:var(--cinza-500)}
+footer .container{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+
+@media (max-width:820px){
+  section{padding:72px 0}
+  .menu a:not(.btn){display:none}
+  .hero{padding:72px 0 64px}
+  .painel{padding:28px}
+}
+</style>
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-indigo-500 selection:text-white w-full max-w-full relative overflow-x-hidden box-border">
+<body>
 
-    <!-- SUBTLE STARFIELD BACKGROUND -->
-    <canvas id="starsCanvas" class="fixed inset-0 pointer-events-none z-0 w-full h-full opacity-40"></canvas>
+<!-- CABEÇALHO: navegação fixa no topo -->
+<header class="topo">
+  <div class="container">
+    <a href="#" class="marca">tovar<span>technology</span></a>
+    <nav class="menu" aria-label="Principal">
+      <a href="#servicos">Serviços</a>
+      <a href="#importancia">Por que ter um site</a>
+      <a href="#exemplos">Exemplos</a>
+      <a href="#processo">Processo</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#contato" class="btn btn-preto"><i class="fa-brands fa-whatsapp"></i> Contato</a>
+    </nav>
+  </div>
+</header>
 
-    <!-- HEADER & NAVIGATION -->
-    <header class="sticky top-0 bg-slate-950/80 backdrop-blur-md border-b border-slate-900 z-40 w-full">
-        <nav class="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center gap-2 w-full box-border">
-            <a href="#" class="flex items-center gap-3 group">
-                <video autoplay muted loop playsinline class="w-10 h-10 md:w-12 md:h-12 object-cover rounded-full overflow-hidden bg-transparent">
-                    <source src="./img/logo-video.mp4" type="video/mp4">
-                </video>
-                <span class="text-base sm:text-lg md:text-xl font-bold tracking-tight text-white whitespace-nowrap">
-                    tovar<span class="text-indigo-500">technology</span>
-                </span>
-            </a>
+<main>
 
-            <div class="space-x-2 md:space-x-6 flex text-xs sm:text-sm md:text-base font-medium text-slate-400 items-center shrink-0">
-                <a href="#servicos" class="hover:text-indigo-400 transition-colors duration-300 hidden md:inline">Serviços</a>
-                <a href="#importancia" class="hover:text-indigo-400 transition-colors duration-300 hidden md:inline">Por que ter um Site?</a>
-                <a href="#projetos" class="hover:text-indigo-400 transition-colors duration-300 hidden md:inline">Exemplos</a>
-                <a href="#processo" class="hover:text-indigo-400 transition-colors duration-300 hidden md:inline">Processo</a>
-              <a href="#contacto" class="bg-[#25D366]/10 text-[#25D366] border border-[#25D366]/30 px-3 py-1.5 rounded-lg hover:bg-[#25D366] hover:text-white transition-all duration-300 whitespace-nowrap flex items-center gap-1.5">
-    <i class="fa-brands fa-whatsapp text-sm"></i>
-    Contato
-</a>
-            </div>
-        </nav>
-    </header>
+<!-- HERO: primeira impressão e chamada principal -->
+<section class="hero">
+  <div class="container">
+    <h1>Sites que apresentam o seu negócio com clareza e geram contatos.</h1>
+    <p>Desenvolvo sites institucionais, landing pages e plataformas web para empresas que querem fortalecer a imagem, passar credibilidade e facilitar a captação de clientes.</p>
+    <div class="acoes">
+      <a href="#contato" class="btn btn-preto">Solicitar orçamento</a>
+      <a href="#servicos" class="btn btn-contorno">Conhecer serviços</a>
+    </div>
+    <div class="dados">
+      <div><i class="fa-solid fa-mobile-screen"></i> Adaptado para celular</div>
+      <div><i class="fa-solid fa-code"></i> Código próprio e organizado</div>
+      <div><i class="fa-solid fa-user"></i> Atendimento direto com o desenvolvedor</div>
+    </div>
+  </div>
+</section>
 
-    <main class="w-full max-w-full overflow-hidden">
-        
-        <!-- 1. HERO SECTION -->
-        <section class="relative max-w-5xl mx-auto px-4 sm:px-6 pt-16 md:pt-28 pb-20 md:pb-28 text-center flex flex-col items-center justify-center min-h-[75vh] z-10">
-            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-slate-800 bg-slate-900/80 text-xs md:text-sm text-indigo-400 font-medium mb-6">
-                <span class="flex h-2 w-2 rounded-full bg-indigo-500 animate-pulse"></span>
-                <span>Desenvolvimento Web Profissional & Estratégico</span>
-            </div>
+<!-- SERVIÇOS -->
+<section id="servicos" class="fundo-gelo">
+  <div class="container">
+    <div class="cabecalho-secao">
+      <h2>Soluções web sob medida</h2>
+      <p>Desenvolvimento focado em resolver gargalos comerciais e melhorar a experiência do seu cliente.</p>
+    </div>
+    <div class="fileira">
+      <article class="card">
+        <div class="icone"><i class="fa-solid fa-store"></i></div>
+        <h3>Pequenas e médias empresas</h3>
+        <p>Sites e catálogos digitais para apresentar produtos e serviços com clareza e atrair mais clientes da sua região.</p>
+        <details><summary>Detalhes da solução</summary><p>Página de apresentação, catálogo de serviços, localização no mapa e botão direto para WhatsApp.</p></details>
+      </article>
+      <article class="card">
+        <div class="icone"><i class="fa-solid fa-building"></i></div>
+        <h3>Projetos corporativos</h3>
+        <p>Plataformas institucionais robustas, seguras e otimizadas, que dão credibilidade ao seu negócio.</p>
+        <details><summary>Detalhes da solução</summary><p>Estrutura com várias páginas, identidade visual consistente, formulários de contato e boas práticas de desempenho.</p></details>
+      </article>
+      <article class="card">
+        <div class="icone"><i class="fa-solid fa-gears"></i></div>
+        <h3>Automação e atendimento</h3>
+        <p>Integração com WhatsApp e assistentes de IA para agilizar o primeiro atendimento aos interessados.</p>
+        <details><summary>Detalhes da solução</summary><p>Respostas para dúvidas frequentes, coleta de dados do cliente e encaminhamento para atendimento humano.</p></details>
+      </article>
+    </div>
+  </div>
+</section>
 
-            <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-tight text-white max-w-4xl">
-                <span>Transforme a presença digital do seu negócio em</span> 
-                <span class="text-indigo-400"> resultados reais</span>
-            </h1>
+<!-- DIFERENCIAIS TÉCNICOS -->
+<section id="vantagens">
+  <div class="container">
+    <div class="cabecalho-secao">
+      <h2>Por que investir em um site profissional</h2>
+      <p>Desenvolvimento técnico limpo que gera valor comercial direto para a sua empresa.</p>
+    </div>
+    <div class="fileira">
+      <article class="card card-4">
+        <div class="icone"><i class="fa-solid fa-gauge-high"></i></div>
+        <h3>Navegação fluida</h3>
+        <p>Páginas leves, que carregam rápido e evitam que o visitante abandone o site.</p>
+      </article>
+      <article class="card card-4">
+        <div class="icone"><i class="fa-solid fa-mobile-screen"></i></div>
+        <h3>Totalmente responsivo</h3>
+        <p>Boa usabilidade em smartphones, tablets e computadores.</p>
+      </article>
+      <article class="card card-4">
+        <div class="icone"><i class="fa-solid fa-shield-halved"></i></div>
+        <h3>Segurança e SSL</h3>
+        <p>Práticas modernas de proteção e certificado SSL para manter as informações seguras.</p>
+      </article>
+      <article class="card card-4">
+        <div class="icone"><i class="fa-solid fa-code"></i></div>
+        <h3>Código limpo</h3>
+        <p>Estrutura organizada que permite expansões e atualizações futuras sem complicação.</p>
+      </article>
+    </div>
+  </div>
+</section>
 
-            <p class="mt-6 text-base sm:text-lg md:text-xl text-slate-400 max-w-2xl leading-relaxed">
-                Desenvolvo sites institucionais, landing pages e plataformas web otimizadas que fortalecem a imagem da sua empresa, passam credibilidade e facilitam a captação de clientes.
-            </p>
+<!-- SETORES ATENDIDOS -->
+<section id="setores" class="fundo-gelo">
+  <div class="container">
+    <div class="cabecalho-secao">
+      <h2>Soluções para o seu tipo de negócio</h2>
+      <p>Cada segmento tem necessidades diferentes. Escolha o seu para ver como o site pode ajudar.</p>
+    </div>
+    <div class="abas" role="tablist">
+      <button class="aba ativa" role="tab" aria-selected="true" data-alvo="alimentacao"><i class="fa-solid fa-utensils"></i> Alimentação e delivery</button>
+      <button class="aba" role="tab" aria-selected="false" data-alvo="estetica"><i class="fa-solid fa-scissors"></i> Estética e saúde</button>
+      <button class="aba" role="tab" aria-selected="false" data-alvo="pet"><i class="fa-solid fa-paw"></i> Petshops e serviços</button>
+      <button class="aba" role="tab" aria-selected="false" data-alvo="comercio"><i class="fa-solid fa-bag-shopping"></i> Comércio em geral</button>
+    </div>
 
-            <div class="flex flex-col sm:flex-row gap-4 mt-8 w-full sm:w-auto text-sm md:text-base">
-                <a href="#contacto" class="bg-indigo-600 text-white px-7 py-3.5 rounded-xl font-medium hover:bg-indigo-500 transition-all duration-300 shadow-lg shadow-indigo-600/20 text-center">
-                    Solicitar Orçamento
-                </a>
-                <a href="#servicos" class="bg-slate-900 border border-slate-800 text-slate-300 px-7 py-3.5 rounded-xl font-medium hover:bg-slate-800 hover:border-slate-700 transition-all duration-300 text-center">
-                    Conhecer Serviços
-                </a>
-            </div>
-        </section>
+    <div class="painel ativo" id="alimentacao">
+      <div class="texto"><h3>Cardápio digital e pedidos pelo WhatsApp</h3><p>Apresente seus pratos com fotos e preços e receba pedidos sem depender de intermediários.</p></div>
+      <ul>
+        <li><i class="fa-solid fa-check"></i>Cardápio sempre atualizado</li>
+        <li><i class="fa-solid fa-check"></i>Botão de pedido direto no WhatsApp</li>
+        <li><i class="fa-solid fa-check"></i>Horários e área de entrega visíveis</li>
+      </ul>
+    </div>
+    <div class="painel" id="estetica">
+      <div class="texto"><h3>Agendamento e apresentação de serviços</h3><p>Mostre seu trabalho, seus valores e facilite a marcação de horários.</p></div>
+      <ul>
+        <li><i class="fa-solid fa-check"></i>Galeria de trabalhos realizados</li>
+        <li><i class="fa-solid fa-check"></i>Formulário de agendamento</li>
+        <li><i class="fa-solid fa-check"></i>Mapa e horários de atendimento</li>
+      </ul>
+    </div>
+    <div class="painel" id="pet">
+      <div class="texto"><h3>Serviços e contato rápido</h3><p>Reúna banho e tosa, consultas e produtos em uma página clara para o tutor.</p></div>
+      <ul>
+        <li><i class="fa-solid fa-check"></i>Lista de serviços com valores</li>
+        <li><i class="fa-solid fa-check"></i>Agendamento pelo WhatsApp</li>
+        <li><i class="fa-solid fa-check"></i>Localização e telefone em destaque</li>
+      </ul>
+    </div>
+    <div class="painel" id="comercio">
+      <div class="texto"><h3>Vitrine online da sua loja</h3><p>Catálogo digital para quem pesquisa antes de visitar ou comprar.</p></div>
+      <ul>
+        <li><i class="fa-solid fa-check"></i>Catálogo de produtos organizado</li>
+        <li><i class="fa-solid fa-check"></i>Contato direto com a loja</li>
+        <li><i class="fa-solid fa-check"></i>Presença confiável no Google</li>
+      </ul>
+    </div>
+  </div>
+</section>
 
-        <!-- 2. SERVICES SECTION -->
-        <section id="servicos" class="bg-slate-900/40 border-t border-b border-slate-900 py-16 md:py-24 px-4 sm:px-6 relative z-10 w-full">
-            <div class="max-w-6xl mx-auto">
-                <div class="text-center max-w-2xl mx-auto mb-12 md:mb-16" data-aos="fade-up">
-                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white mb-3">Soluções Web sob Medida</h2>
-                    <p class="text-slate-400 text-sm sm:text-base">Desenvolvimento focado em resolver gargalos comerciais e melhorar a experiência do seu cliente.</p>
-                </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-                    <div onclick="openModal('pme')" class="p-6 md:p-8 border border-slate-800/80 rounded-2xl bg-slate-900/60 hover:border-indigo-500/50 transition-all duration-300 cursor-pointer group">
-                        <div class="w-12 h-12 bg-indigo-500/10 border border-indigo-500/20 rounded-xl flex items-center justify-center text-indigo-400 mb-6 text-xl">
-                            <i class="fa-solid fa-store"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3 text-white">Pequenas e Médias Empresas</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed mb-6">Sites e catálogos digitais para apresentar seus produtos/serviços com clareza e atrair mais clientes locais.</p>
-                        <span class="text-xs font-semibold text-indigo-400 group-hover:underline flex items-center gap-1.5">
-                            <span>Detalhes da solução</span> <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                        </span>
-                    </div>
-
-                    <div onclick="openModal('corp')" class="p-6 md:p-8 border border-slate-800/80 rounded-2xl bg-slate-900/60 hover:border-indigo-500/50 transition-all duration-300 cursor-pointer group">
-                        <div class="w-12 h-12 bg-indigo-500/10 border border-indigo-500/20 rounded-xl flex items-center justify-center text-indigo-400 mb-6 text-xl">
-                            <i class="fa-solid fa-building"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3 text-white">Projetos Corporativos</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed mb-6">Plataformas institucionais robustas, seguras e otimizadas para dar total credibilidade ao seu negócio.</p>
-                        <span class="text-xs font-semibold text-indigo-400 group-hover:underline flex items-center gap-1.5">
-                            <span>Detalhes da solução</span> <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                        </span>
-                    </div>
-
-                    <div onclick="openModal('ia')" class="p-6 md:p-8 border border-slate-800/80 rounded-2xl bg-slate-900/60 hover:border-indigo-500/50 transition-all duration-300 cursor-pointer group">
-                        <div class="w-12 h-12 bg-indigo-500/10 border border-indigo-500/20 rounded-xl flex items-center justify-center text-indigo-400 mb-6 text-xl">
-                            <i class="fa-solid fa-gears"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3 text-white">Automação & Atendimento</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed mb-6">Integração com WhatsApp e assistentes de IA para agilizar o atendimento inicial aos interessados.</p>
-                        <span class="text-xs font-semibold text-indigo-400 group-hover:underline flex items-center gap-1.5">
-                            <span>Detalhes da solução</span> <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 3. BENEFITS / ADVANTAGES -->
-        <section id="vantagens" class="max-w-6xl mx-auto py-16 md:py-24 px-4 sm:px-6 relative z-10 w-full">
-            <div class="text-center max-w-2xl mx-auto mb-12 md:mb-16" data-aos="fade-up">
-                <span class="text-xs font-semibold text-indigo-400 uppercase tracking-widest">Diferenciais Técnicos</span>
-                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white mt-2 mb-3">Por Que Investir em um Site Profissional?</h2>
-                <p class="text-slate-400 text-sm sm:text-base">Desenvolvimento técnico limpo que gera valor comercial direto para sua empresa.</p>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="p-6 border border-slate-900 rounded-xl bg-slate-900/30 text-center space-y-3 hover:border-slate-800 transition-colors">
-                    <div class="text-2xl text-indigo-400"><i class="fa-solid fa-gauge-high"></i></div>
-                    <h3 class="text-base font-bold text-white">Navegação Fluida</h3>
-                    <p class="text-xs text-slate-400 leading-relaxed">Páginas otimizadas para carregar sem demoras, garantindo que o visitante não abandone seu site.</p>
-                </div>
-                
-                <div class="p-6 border border-slate-900 rounded-xl bg-slate-900/30 text-center space-y-3 hover:border-slate-800 transition-colors">
-                    <div class="text-2xl text-indigo-400"><i class="fa-solid fa-mobile-screen"></i></div>
-                    <h3 class="text-base font-bold text-white">Totalmente Responsivo</h3>
-                    <p class="text-xs text-slate-400 leading-relaxed">Adaptação perfeita em smartphones, tablets e computadores, oferecendo excelente usabilidade.</p>
-                </div>
-
-                <div class="p-6 border border-slate-900 rounded-xl bg-slate-900/30 text-center space-y-3 hover:border-slate-800 transition-colors">
-                    <div class="text-2xl text-indigo-400"><i class="fa-solid fa-shield-halved"></i></div>
-                    <h3 class="text-base font-bold text-white">Segurança & Criptografia</h3>
-                    <p class="text-xs text-slate-400 leading-relaxed">Práticas modernas de proteção e certificado SSL para manter as informações do seu negócio protegidas.</p>
-                </div>
-
-                <div class="p-6 border border-slate-900 rounded-xl bg-slate-900/30 text-center space-y-3 hover:border-slate-800 transition-colors">
-                    <div class="text-2xl text-indigo-400"><i class="fa-solid fa-code"></i></div>
-                    <h3 class="text-base font-bold text-white">Código Limpo</h3>
-                    <p class="text-xs text-slate-400 leading-relaxed">Desenvolvimento estruturado que permite futuras expansões e atualizações sem complicações.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECTORS WE SERVE -->
-        <section id="setores" class="bg-slate-900/20 border-t border-b border-slate-900 py-16 md:py-20 px-4 sm:px-6 relative z-10 w-full">
-            <div class="max-w-6xl mx-auto">
-                <div class="text-center max-w-2xl mx-auto mb-10" data-aos="fade-up">
-                    <span class="text-xs font-semibold text-indigo-400 uppercase tracking-widest">Atendimento Segmentado</span>
-                    <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white mt-1 mb-3">Soluções Para Seu Nível de Negócio</h2>
-                </div>
-
-                <div class="flex flex-wrap justify-center gap-3 mb-10 max-w-4xl mx-auto">
-                    <button onclick="switchSector('alimentacao', this)" class="sector-btn px-4 py-2 rounded-xl border border-indigo-500 bg-indigo-600/10 text-indigo-400 font-medium text-xs sm:text-sm transition-all cursor-pointer">
-                        <i class="fa-solid fa-utensils mr-2"></i><span>Alimentação & Delivery</span>
-                    </button>
-                    <button onclick="switchSector('estetica', this)" class="sector-btn px-4 py-2 rounded-xl border border-slate-800 bg-slate-900/50 text-slate-400 font-medium text-xs sm:text-sm hover:border-slate-700 hover:text-slate-200 transition-all cursor-pointer">
-                        <i class="fa-solid fa-scissors mr-2"></i><span>Estética & Saúde</span>
-                    </button>
-                    <button onclick="switchSector('pet', this)" class="sector-btn px-4 py-2 rounded-xl border border-slate-800 bg-slate-900/50 text-slate-400 font-medium text-xs sm:text-sm hover:border-slate-700 hover:text-slate-200 transition-all cursor-pointer">
-                        <i class="fa-solid fa-paw mr-2"></i><span>Petshops & Serviços</span>
-                    </button>
-                    <button onclick="switchSector('comercio', this)" class="sector-btn px-4 py-2 rounded-xl border border-slate-800 bg-slate-900/50 text-slate-400 font-medium text-xs sm:text-sm hover:border-slate-700 hover:text-slate-200 transition-all cursor-pointer">
-                        <i class="fa-solid fa-bag-shopping mr-2"></i><span>Comércio em Geral</span>
-                    </button>
-                </div>
-
-                <div id="sectorContent" class="max-w-4xl mx-auto border border-slate-800/80 bg-slate-900/50 rounded-2xl p-6 md:p-8 min-h-[220px] flex flex-col justify-center transition-all duration-300">
-                </div>
-            </div>
-        </section>
-
-        <!-- 4. EXEMPLES OF SITES & IA AGENTS (REPLACED FEATURED PROJECTS) -->
-        <section id="projetos" class="max-w-6xl mx-auto py-16 md:py-24 px-4 sm:px-6 relative z-10 w-full">
-            <div class="text-center max-w-2xl mx-auto mb-12 md:mb-16" data-aos="fade-up">
-                <span class="text-xs font-semibold text-indigo-400 uppercase tracking-widest">Modelos & Protótipos</span>
-                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white mb-3">Exemplos de Aplicações Web & Agentes de IA</h2>
-                <p class="text-slate-400 text-sm sm:text-base">Veja como uma página bem estruturada e a integração de automações inteligentes podem transformar a operação do seu negócio.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- EXEMPLO DE SITE / PAGINA -->
-                <div onclick="openModal('proj1')" class="group bg-slate-900/40 rounded-2xl overflow-hidden border border-slate-800/80 hover:border-indigo-500/40 transition-all duration-300 cursor-pointer">
-                    <div class="h-48 sm:h-56 overflow-hidden relative">
-                        <img src="https://www.mymallbox.com/wp-content/uploads/2023/09/10-most-visited-united-states-ecommerce-websites-in-2023-mymallbox-1024x512.jpg" alt="Exemplo de Estrutura Web" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-slate-950/20"></div>
-                    </div>
-                    <div class="p-6 space-y-3">
-                        <span class="inline-block text-xs font-semibold uppercase tracking-wider text-indigo-400 bg-indigo-500/10 border border-indigo-500/20 px-2.5 py-1 rounded">Modelo de Página Web</span>
-                        <h3 class="text-lg font-bold text-white group-hover:text-indigo-400 transition-colors">Exemplo: Estrutura Web Profissional</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed">Demonstração de como organizar seus produtos, catálogos e informações corporativas com design intuitivo e navegação rápida.</p>
-                    </div>
-                </div>
-
-                <!-- EXEMPLO DE AGENTE DE IA -->
-                <div onclick="openModal('proj2')" class="group bg-slate-900/40 rounded-2xl overflow-hidden border border-slate-800/80 hover:border-indigo-500/40 transition-all duration-300 cursor-pointer">
-                    <div class="h-48 sm:h-56 overflow-hidden relative">
-                        <img src="https://www.chatinteligente.com.br/blog/assets/images/intro.png" alt="Exemplo de IA no Atendimento" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-slate-950/20"></div>
-                    </div>
-                    <div class="p-6 space-y-3">
-                        <span class="inline-block text-xs font-semibold uppercase tracking-wider text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-1 rounded">IA & Automação</span>
-                        <h3 class="text-lg font-bold text-white group-hover:text-emerald-400 transition-colors">Exemplo: Agente de IA para Atendimento</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed">Assistente virtual inteligente capaz de responder dúvidas frequentes, qualificar potenciais clientes e agendar atendimentos via WhatsApp 24/7.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 5. WHY A STORE / BUSINESS NEEDS A WEBSITE (DETAILED INFORMATION) -->
-        <section id="importancia" class="bg-slate-900/40 border-t border-b border-slate-900 py-16 md:py-24 px-4 sm:px-6 relative z-10 w-full">
-            <div class="max-w-6xl mx-auto space-y-12">
-                <div class="text-center max-w-3xl mx-auto" data-aos="fade-up">
-                    <span class="text-xs font-semibold text-indigo-400 uppercase tracking-widest">Análise Estratégica</span>
-                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white mt-2 mb-4">Por que Toda Loja ou Empresa Precisa de um Site?</h2>
-                    <p class="text-slate-400 text-sm sm:text-base leading-relaxed">
-                        No mercado atual, o site deixou de ser um simples luxo para se tornar o pilar central da credibilidade e das vendas de qualquer negócio.
-                    </p>
-                </div>
-
-                <!-- COMPARISON GRID: ADVANTAGES VS RISKS -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- ADVANTAGES -->
-                    <div class="p-6 sm:p-8 bg-slate-900/70 border border-indigo-500/30 rounded-2xl space-y-4">
-                        <div class="flex items-center gap-3 text-indigo-400">
-                            <i class="fa-solid fa-circle-check text-2xl"></i>
-                            <h3 class="text-xl font-bold text-white">Vantagens de Ter um Site Próprio</h3>
-                        </div>
-                        <ul class="space-y-3 text-xs sm:text-sm text-slate-300">
-                            <li class="flex items-start gap-2.5">
-                                <i class="fa-solid fa-check text-indigo-400 mt-1 shrink-0"></i>
-                                <span><strong>Credibilidade e Confiança:</strong> Clientes pesquisam no Google antes de comprar. Um site transmite maturidade profissional.</span>
-                            </li>
-                            <li class="flex items-start gap-2.5">
-                                <i class="fa-solid fa-check text-indigo-400 mt-1 shrink-0"></i>
-                                <span><strong>Atendimento 24/7:</strong> Sua empresa fica aberta e apresentável 24 horas por dia, 7 dias por semana, sem custos operacionais extras.</span>
-                            </li>
-                            <li class="flex items-start gap-2.5">
-                                <i class="fa-solid fa-check text-indigo-400 mt-1 shrink-0"></i>
-                                <span><strong>Controle Total do Seu Canal:</strong> Diferente de redes sociais (que mudam regras ou bloqueiam contas), o site é um ativo 100% seu.</span>
-                            </li>
-                            <li class="flex items-start gap-2.5">
-                                <i class="fa-solid fa-check text-indigo-400 mt-1 shrink-0"></i>
-                                <span><strong>Captação de Clientes no Google:</strong> Apareça para pessoas que já estão buscando ativamente pelo seu produto ou serviço.</span>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- DESADVANTAGES OF NOT HAVING ONE -->
-                    <div class="p-6 sm:p-8 bg-slate-900/70 border border-rose-500/20 rounded-2xl space-y-4">
-                        <div class="flex items-center gap-3 text-rose-400">
-                            <i class="fa-solid fa-triangle-exclamation text-2xl"></i>
-                            <h3 class="text-xl font-bold text-white">Desvantagens de Não Ter um Site Hoje</h3>
-                        </div>
-                        <ul class="space-y-3 text-xs sm:text-sm text-slate-300">
-                            <li class="flex items-start gap-2.5">
-                                <i class="fa-solid fa-xmark text-rose-400 mt-1 shrink-0"></i>
-                                <span><strong>Perda Constante de Clientes:</strong> Se o comprador busca seu serviço e não encontra um site oficial, ele opta pelo concorrente.</span>
-                            </li>
-                            <li class="flex items-start gap-2.5">
-                                <i class="fa-solid fa-xmark text-rose-400 mt-1 shrink-0"></i>
-                                <span><strong>Dependência Total de Redes Sociais:</strong> Ficar refém de algoritmos do Instagram/Facebook reduz o alcance orgânico da sua loja.</span>
-                            </li>
-                            <li class="flex items-start gap-2.5">
-                                <i class="fa-solid fa-xmark text-rose-400 mt-1 shrink-0"></i>
-                                <span><strong>Sensação de Negócio Amador:</strong> Sem endereço web corporativo, o cliente questiona a segurança e a idoneidade da empresa.</span>
-                            </li>
-                            <li class="flex items-start gap-2.5">
-                                <i class="fa-solid fa-xmark text-rose-400 mt-1 shrink-0"></i>
-                                <span><strong>Atendimento Lento e Desorganizado:</strong> Responder manualmente às mesmas perguntas no WhatsApp consome tempo precioso.</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- STAND OUT FROM COMPETITION -->
-                <div class="p-6 md:p-8 border border-slate-800 bg-slate-900/90 rounded-2xl text-center space-y-4 max-w-4xl mx-auto">
-                    <h3 class="text-xl sm:text-2xl font-bold text-white">Por que quem tem um site se destaca no mercado?</h3>
-                    <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
-                        A empresa que possui um site profissional passa a imagem de uma estrutura consolida e segura. Enquanto os concorrentes dependem apenas de conversas informais, você entrega informações claras, catálogos automatizados e atendimento imediato. Quem tem site transmite autoridade, cobra melhor e fecha mais negócios.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 6. WORK PROCESS -->
-        <section id="processo" class="py-16 md:py-24 px-4 sm:px-6 relative z-10 w-full">
-            <div class="max-w-6xl mx-auto">
-                <div class="text-center max-w-2xl mx-auto mb-12 md:mb-16" data-aos="fade-up">
-                    <span class="text-xs font-semibold text-indigo-400 uppercase tracking-widest">Transparência</span>
-                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white mt-2 mb-3">Como Funciona o Processo</h2>
-                    <p class="text-slate-400 text-sm sm:text-base">Etapas bem definidas para garantir prazos e a entrega de um projeto impecável.</p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-                    <div class="p-6 bg-slate-900/60 border border-slate-800 rounded-2xl relative">
-                        <div class="text-indigo-400 text-xl font-bold mb-3">01.</div>
-                        <h3 class="text-base font-bold text-white mb-2">Alinhamento</h3>
-                        <p class="text-xs text-slate-400 leading-relaxed">Entendimento dos objetivos comerciais, público-alvo e necessidades técnicas do seu projeto.</p>
-                    </div>
-
-                    <div class="p-6 bg-slate-900/60 border border-slate-800 rounded-2xl relative">
-                        <div class="text-indigo-400 text-xl font-bold mb-3">02.</div>
-                        <h3 class="text-base font-bold text-white mb-2">Estruturação</h3>
-                        <p class="text-xs text-slate-400 leading-relaxed">Criação do protótipo e organização visual do conteúdo focando na experiência do usuário.</p>
-                    </div>
-
-                    <div class="p-6 bg-slate-900/60 border border-slate-800 rounded-2xl relative">
-                        <div class="text-indigo-400 text-xl font-bold mb-3">03.</div>
-                        <h3 class="text-base font-bold text-white mb-2">Desenvolvimento</h3>
-                        <p class="text-xs text-slate-400 leading-relaxed">Escrita de código limpo, otimização de velocidade, segurança e adaptação a dispositivos móveis.</p>
-                    </div>
-
-                    <div class="p-6 bg-slate-900/60 border border-slate-800 rounded-2xl relative">
-                        <div class="text-indigo-400 text-xl font-bold mb-3">04.</div>
-                        <h3 class="text-base font-bold text-white mb-2">Lançamento</h3>
-                        <p class="text-xs text-slate-400 leading-relaxed">Publicação no servidor, testes finais de funcionamento e entrega do projeto pronto para uso.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 7. ABOUT ME SECTION (WITH NEW HEADING ABOVE PHOTO) -->
-        <section id="sobre-mi" class="bg-slate-900/30 border-t border-b border-slate-900 py-16 md:py-24 px-4 sm:px-6 relative z-10 w-full">
-            <div class="max-w-xl mx-auto text-center flex flex-col items-center" data-aos="fade-up">
-                
-                <!-- NEW TEXT HEADING ABOVE PHOTO -->
-                <span class="text-xs font-semibold text-indigo-400 uppercase tracking-widest mb-2">Responsável Técnico</span>
-                <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-6">Quem cuida de todo o desenvolvimento e da tecnologia?</h2>
-
-               <div class="w-36 h-36 sm:w-44 sm:h-44 rounded-full overflow-hidden border-2 border-indigo-500/30 bg-slate-900 shadow-xl mb-5 relative">
-    <img 
-        src="./img/jose-tovar-desarrollador-web.webp" 
-        alt="José Tovar - Programador Web" 
-        class="w-full h-full object-cover"
-    >
-
-    <!-- Máscara sutil para reducir la iluminación -->
-    <div class="absolute inset-0 bg-black/30 pointer-events-none"></div>
-</div>
-
-                <h3 class="text-xl md:text-2xl font-bold text-white tracking-wide">José Tovar</h3>
-                <p class="text-xs md:text-sm font-semibold text-indigo-400 uppercase tracking-widest mt-1">Programador Web & Especialista em Automações</p>
-
-                <div class="w-16 h-0.5 bg-indigo-500/40 my-5 rounded-full"></div>
-
-                <button onclick="openAboutModal()" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-slate-800 bg-slate-900/80 text-xs sm:text-sm text-slate-300 font-medium hover:border-indigo-500/40 hover:text-white transition-all cursor-pointer">
-                    <i class="fa-solid fa-user text-indigo-400"></i>
-                    <span>Saiba mais sobre mim</span>
-                </button>
-            </div>
-        </section>
-
-        <!-- 8. FAQ SECTION -->
-        <section id="faq" class="py-16 md:py-24 px-4 sm:px-6 relative z-10 w-full">
-            <div class="max-w-4xl mx-auto">
-                <div class="text-center max-w-2xl mx-auto mb-12" data-aos="fade-up">
-                    <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white mb-3">Perguntas Frequentes</h2>
-                    <p class="text-slate-400 text-sm">Respostas diretas para as dúvidas mais comuns antes de contratar um projeto.</p>
-                </div>
-
-                <div class="space-y-4">
-                    <details class="group border border-slate-800 rounded-xl bg-slate-900/40 p-4 [&_summary::-webkit-details-marker]:none">
-                        <summary class="flex items-center justify-between cursor-pointer font-medium text-white text-sm sm:text-base">
-                            <span>Quanto tempo leva para desenvolver um site?</span>
-                            <span class="transition group-open:rotate-180 text-indigo-400"><i class="fa-solid fa-chevron-down text-xs"></i></span>
-                        </summary>
-                        <p class="mt-3 text-xs sm:text-sm text-slate-400 leading-relaxed">
-                            O prazo médio varia entre 1 e 3 semanas, dependendo da complexidade das páginas e do envio das informações básicas pelo cliente.
-                        </p>
-                    </details>
-
-                    <details class="group border border-slate-800 rounded-xl bg-slate-900/40 p-4 [&_summary::-webkit-details-marker]:none">
-                        <summary class="flex items-center justify-between cursor-pointer font-medium text-white text-sm sm:text-base">
-                            <span>O site funcionará bem em celulares?</span>
-                            <span class="transition group-open:rotate-180 text-indigo-400"><i class="fa-solid fa-chevron-down text-xs"></i></span>
-                        </summary>
-                        <p class="mt-3 text-xs sm:text-sm text-slate-400 leading-relaxed">
-                            Sim. Todos os projetos são desenvolvidos garantindo perfeita adaptação em smartphones, tablets e computadores.
-                        </p>
-                    </details>
-
-                    <details class="group border border-slate-800 rounded-xl bg-slate-900/40 p-4 [&_summary::-webkit-details-marker]:none">
-                        <summary class="flex items-center justify-between cursor-pointer font-medium text-white text-sm sm:text-base">
-                            <span>Como funciona a contratação de domínio e hospedagem?</span>
-                            <span class="transition group-open:rotate-180 text-indigo-400"><i class="fa-solid fa-chevron-down text-xs"></i></span>
-                        </summary>
-                        <p class="mt-3 text-xs sm:text-sm text-slate-400 leading-relaxed">
-                            Eu auxilio em todo o processo de contratação no seu próprio nome para que você mantenha a propriedade total do seu site.
-                        </p>
-                    </details>
-
-                    <details class="group border border-slate-800 rounded-xl bg-slate-900/40 p-4 [&_summary::-webkit-details-marker]:none">
-                        <summary class="flex items-center justify-between cursor-pointer font-medium text-white text-sm sm:text-base">
-                            <span>O site é otimizado para o Google (SEO)?</span>
-                            <span class="transition group-open:rotate-180 text-indigo-400"><i class="fa-solid fa-chevron-down text-xs"></i></span>
-                        </summary>
-                        <p class="mt-3 text-xs sm:text-sm text-slate-400 leading-relaxed">
-                            Sim. Aplicamos boas práticas de SEO técnico para facilitar que seu negócio seja encontrado nos mecanismos de busca.
-                        </p>
-                    </details>
-
-                    <details class="group border border-slate-800 rounded-xl bg-slate-900/40 p-4 [&_summary::-webkit-details-marker]:none">
-                        <summary class="flex items-center justify-between cursor-pointer font-medium text-white text-sm sm:text-base">
-                            <span>Terei suporte técnico após a entrega?</span>
-                            <span class="transition group-open:rotate-180 text-indigo-400"><i class="fa-solid fa-chevron-down text-xs"></i></span>
-                        </summary>
-                        <p class="mt-3 text-xs sm:text-sm text-slate-400 leading-relaxed">
-                            Ofereço 30 dias de suporte técnico garantido após o lançamento do site para eventuais dúvidas e ajustes técnicos.
-                        </p>
-                    </details>
-
-                    <details class="group border border-slate-800 rounded-xl bg-slate-900/40 p-4 [&_summary::-webkit-details-marker]:none">
-                        <summary class="flex items-center justify-between cursor-pointer font-medium text-white text-sm sm:text-base">
-                            <span>Quais formas de pagamento são aceitas?</span>
-                            <span class="transition group-open:rotate-180 text-indigo-400"><i class="fa-solid fa-chevron-down text-xs"></i></span>
-                        </summary>
-                        <p class="mt-3 text-xs sm:text-sm text-slate-400 leading-relaxed">
-                            Geralmente dividimos em pagamento inicial de entrada e quitação no momento do lançamento do projeto.
-                        </p>
-                    </details>
-
-                    <details class="group border border-slate-800 rounded-xl bg-slate-900/40 p-4 [&_summary::-webkit-details-marker]:none">
-                        <summary class="flex items-center justify-between cursor-pointer font-medium text-white text-sm sm:text-base">
-                            <span>Eu mesmo poderei atualizar informações no futuro?</span>
-                            <span class="transition group-open:rotate-180 text-indigo-400"><i class="fa-solid fa-chevron-down text-xs"></i></span>
-                        </summary>
-                        <p class="mt-3 text-xs sm:text-sm text-slate-400 leading-relaxed">
-                            O projeto pode contar com painel administrativo simples ou contratos de manutenção periódica conforme a sua preferência.
-                        </p>
-                    </details>
-
-                    <details class="group border border-slate-800 rounded-xl bg-slate-900/40 p-4 [&_summary::-webkit-details-marker]:none">
-                        <summary class="flex items-center justify-between cursor-pointer font-medium text-white text-sm sm:text-base">
-                            <span>O que preciso enviar para dar início ao projeto?</span>
-                            <span class="transition group-open:rotate-180 text-indigo-400"><i class="fa-solid fa-chevron-down text-xs"></i></span>
-                        </summary>
-                        <p class="mt-3 text-xs sm:text-sm text-slate-400 leading-relaxed">
-                            Apenas as informações básicas do seu negócio, como logotipo, imagens dos serviços e contatos oficiais.
-                        </p>
-                    </details>
-                </div>
-            </div>
-        </section>
-
-        <!-- 9. CONTACT SECTION -->
-        <section id="contacto" class="bg-slate-900/30 border-t border-slate-900 py-16 md:py-24 px-4 sm:px-6 relative z-10 w-full">
-            <div class="max-w-3xl mx-auto text-center space-y-6" data-aos="fade-up">
-                <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold text-white">Pronto para Profissionalizar sua Presença na Web?</h2>
-                <p class="text-slate-400 text-sm sm:text-base max-w-xl mx-auto">
-                    Entre em contato para conversarmos sobre a solução ideal para seu negócio e solicitar um orçamento sem compromisso.
-                </p>
-                
-                <div class="flex flex-col sm:flex-row justify-center gap-4 max-w-md mx-auto pt-4 text-sm w-full">
-                   <a href="https://wa.me/5519995149370?text=Ol%C3%A1%21%20Vi%20o%20seu%20site%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento%20e%20entender%20melhor%20como%20funcionam%20os%20seus%20servi%C3%A7os%20para%20o%20meu%20neg%C3%B3cio." target="_blank" rel="noopener noreferrer" class="flex-1 bg-emerald-600 text-white px-5 py-3.5 rounded-xl font-semibold hover:bg-emerald-500 transition-all flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/10">
-                        <i class="fa-brands fa-whatsapp text-lg"></i> <span>Falar via WhatsApp</span>
-                    </a>
-                    
-                    <a href="mailto:joshetoby026@gmail.com?subject=Contato%20-%20Desenvolvimento%20Web" class="flex-1 bg-indigo-600 text-white px-5 py-3.5 rounded-xl font-semibold hover:bg-indigo-500 transition-all flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/10">
-                        <i class="fa-solid fa-envelope text-lg"></i> <span>Enviar E-mail</span>
-                    </a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- GENERAL SERVICE MODAL -->
-    <div id="infoModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
-        <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-lg w-full p-6 md:p-8 relative transform scale-95 transition-transform duration-300 space-y-4">
-            <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white transition-colors text-lg">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-            <div id="modalHeader"></div>
-            <h3 id="modalTitle" class="text-xl font-bold text-white"></h3>
-            <div id="modalBody" class="text-slate-300 text-xs sm:text-sm leading-relaxed space-y-3"></div>
+<!-- EXEMPLOS -->
+<section id="exemplos">
+  <div class="container">
+    <div class="cabecalho-secao">
+      <h2>Exemplos de aplicações web e agentes de IA</h2>
+      <p>Modelos que mostram como uma página bem estruturada e automações inteligentes melhoram a operação do seu negócio.</p>
+    </div>
+    <div class="fileira">
+      <article class="card exemplo">
+        <figure><img src="https://www.mymallbox.com/wp-content/uploads/2023/09/10-most-visited-united-states-ecommerce-websites-in-2023-mymallbox-1024x512.jpg" alt="Exemplo de estrutura de página web" loading="lazy"></figure>
+        <div class="corpo">
+          <span class="etiqueta">Modelo de página web</span>
+          <h3>Estrutura web profissional</h3>
+          <p>Como organizar produtos, catálogos e informações da empresa com design intuitivo e navegação rápida.</p>
         </div>
-    </div>
-
-    <!-- ABOUT ME MODAL -->
-    <div id="aboutModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
-        <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-xl w-full p-6 md:p-8 relative transform scale-95 transition-transform duration-300 space-y-5 text-left">
-            <button onclick="closeAboutModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white transition-colors text-lg">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-            
-            <div class="border-b border-slate-800 pb-3">
-                <h3 class="text-xl md:text-2xl font-bold text-white">Sobre mim</h3>
-                <p class="text-xs text-indigo-400 font-medium mt-0.5">José Tovar • Programador Web</p>
-            </div>
-
-    <div class="space-y-4 text-slate-300 text-xs sm:text-sm md:text-base leading-relaxed">
-    <p>Sou programador independente, especializado no desenvolvimento de soluções web focadas em necessidades reais de negócios e em uma presença digital profissional. Trabalho sem intermediários: do primeiro contato ao código em produção, sou eu quem conduz cada etapa do projeto, o que garante mais agilidade na comunicação e total controle sobre a qualidade da entrega.</p>
-    <div>
-        <h4 class="font-semibold text-white mb-1 text-sm md:text-base">Trajetória e transição</h4>
-        <p class="text-slate-400">Vindo de uma trajetória prática em outra área, decidi direcionar meu caminho para o desenvolvimento de software, unindo disciplina e visão prática de resolução de problemas a uma nova paixão pela tecnologia.</p>
-    </div>
-    <div>
-        <h4 class="font-semibold text-white mb-1 text-sm md:text-base">Forma de trabalhar</h4>
-        <p class="text-slate-400">Valorizo a comunicação direta, a transparência e o cumprimento dos prazos acordados. Cada projeto é desenvolvido buscando bom desempenho, segurança e uma experiência de navegação clara.</p>
-    </div>
-</div>
-
-            <div class="pt-2 flex flex-col sm:flex-row justify-end gap-3 border-t border-slate-800">
-                <button onclick="closeAboutModal()" class="px-4 py-2 rounded-lg border border-slate-800 text-slate-400 text-xs hover:text-white transition-colors">Fechar</button>
-                <a href="#contacto" onclick="closeAboutModal()" class="px-4 py-2 rounded-lg bg-indigo-600 text-white text-xs font-semibold hover:bg-indigo-500 transition-colors text-center">Entrar em contato</a>
-            </div>
+      </article>
+      <article class="card exemplo">
+        <figure><img src="https://www.chatinteligente.com.br/blog/assets/images/intro.png" alt="Exemplo de IA no atendimento" loading="lazy"></figure>
+        <div class="corpo">
+          <span class="etiqueta">IA e automação</span>
+          <h3>Agente de IA para atendimento</h3>
+          <p>Assistente virtual que responde dúvidas frequentes, qualifica interessados e agenda atendimentos pelo WhatsApp, 24 horas por dia.</p>
         </div>
+      </article>
     </div>
+  </div>
+</section>
 
-    <!-- FOOTER -->
-<!-- FOOTER -->
-<footer class="w-full bg-slate-950 border-t border-slate-900 py-8 px-4 text-center z-10 relative">
-  <div class="max-w-6xl mx-auto flex flex-col items-center justify-center gap-4">
-    
-    <!-- 1. PRIMERO: Logo y Subtítulo -->
-    <div class="flex flex-col sm:flex-row items-center justify-center gap-2 text-sm text-slate-400">
-      <span class="font-bold tracking-tight text-white text-base">
-        tovar<span class="text-indigo-500">technology</span>
-      </span>
-      <span class="hidden sm:inline text-slate-600">·</span>
-      <span class="text-xs sm:text-sm text-slate-400">Desenvolvimento Web Profissional</span>
+<!-- POR QUE TER UM SITE -->
+<section id="importancia" class="fundo-gelo">
+  <div class="container">
+    <div class="cabecalho-secao">
+      <h2>Por que toda loja ou empresa precisa de um site</h2>
+      <p>No mercado atual, o site é o pilar da credibilidade e das vendas de qualquer negócio.</p>
     </div>
+    <div class="comparativo">
+      <div class="bloco claro">
+        <h3>Vantagens de ter um site próprio</h3>
+        <ul>
+          <li><i class="fa-solid fa-check"></i><span><strong>Credibilidade e confiança.</strong> Clientes pesquisam no Google antes de comprar, e um site transmite seriedade.</span></li>
+          <li><i class="fa-solid fa-check"></i><span><strong>Presença 24 horas.</strong> Seu negócio fica apresentado mesmo fora do horário de atendimento.</span></li>
+          <li><i class="fa-solid fa-check"></i><span><strong>Canal próprio.</strong> Você não depende só de redes sociais, que mudam regras e alcance.</span></li>
+          <li><i class="fa-solid fa-check"></i><span><strong>Mais contatos.</strong> Botões e formulários levam o visitante direto ao seu WhatsApp.</span></li>
+        </ul>
+      </div>
+      <div class="bloco escuro">
+        <h3>Riscos de ficar sem site</h3>
+        <ul>
+          <li><i class="fa-solid fa-xmark"></i><span><strong>Perder clientes para concorrentes</strong> que aparecem nas buscas e passam mais confiança.</span></li>
+          <li><i class="fa-solid fa-xmark"></i><span><strong>Imagem informal demais</strong> para empresas que querem fechar contratos maiores.</span></li>
+          <li><i class="fa-solid fa-xmark"></i><span><strong>Dependência de terceiros</strong> para divulgar produtos, preços e horários.</span></li>
+          <li><i class="fa-solid fa-xmark"></i><span><strong>Informação dispersa,</strong> o que dificulta a decisão de compra do cliente.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- 2. SEGUNDO: Copyright al final -->
-    <p class="text-xs text-slate-500">
-      © 2026 Tovar Technology. Todos os direitos reservados.
-    </p>
+<!-- PROCESSO -->
+<section id="processo">
+  <div class="container">
+    <div class="cabecalho-secao">
+      <h2>Como funciona o trabalho</h2>
+      <p>Um processo simples, com comunicação direta em cada etapa.</p>
+    </div>
+    <div class="etapas">
+      <div class="etapa"><span class="num">Etapa 1</span><h3>Conversa inicial</h3><p>Entendo seu negócio, seu público e o que o site precisa resolver.</p></div>
+      <div class="etapa"><span class="num">Etapa 2</span><h3>Proposta e orçamento</h3><p>Defino escopo, prazo e valor antes de começar.</p></div>
+      <div class="etapa"><span class="num">Etapa 3</span><h3>Desenvolvimento</h3><p>Construo o site e mostro o andamento para você aprovar.</p></div>
+      <div class="etapa"><span class="num">Etapa 4</span><h3>Publicação e suporte</h3><p>Coloco o site no ar e acompanho os ajustes iniciais.</p></div>
+    </div>
+  </div>
+</section>
 
+<!-- SOBRE -->
+<section id="sobre" class="fundo-gelo">
+  <div class="container sobre">
+    <div class="titulo"><h2>Sobre mim</h2></div>
+    <div class="texto">
+      <p>Sou José Tovar, desenvolvedor web independente em Louveira - SP. Trabalho direto com cada cliente, sem intermediários, do primeiro contato até a publicação do site.</p>
+      <p>Vim de outra área para o desenvolvimento web e levo para os projetos a organização e o cuidado com o atendimento que aprendi na minha trajetória anterior.</p>
+      <p>Cada projeto é feito com código próprio, pensado para o seu negócio e fácil de evoluir.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="cabecalho-secao"><h2>Perguntas frequentes</h2></div>
+    <div class="faq">
+      <details><summary>Quanto tempo leva para ficar pronto?</summary><p>Depende do tamanho do projeto. Uma landing page costuma ser mais rápida que um site com várias páginas. O prazo é combinado na proposta.</p></details>
+      <details><summary>O site funciona bem no celular?</summary><p>Sim. Todos os projetos são desenvolvidos para se adaptar a celulares, tablets e computadores.</p></details>
+      <details><summary>Posso pedir alterações depois de publicado?</summary><p>Pode. Combinamos o suporte inicial e as manutenções futuras conforme a sua necessidade.</p></details>
+      <details><summary>Preciso ter domínio e hospedagem?</summary><p>Posso orientar você na escolha e no registro do domínio e da hospedagem adequados ao seu projeto.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section id="contato" class="contato">
+  <div class="container">
+    <div class="chamada">
+      <h2>Vamos conversar sobre o seu projeto?</h2>
+      <p>Conte o que o seu negócio precisa e receba um orçamento claro, sem compromisso.</p>
+      <a href="https://wa.me/5519995149370" class="btn btn-preto" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> Chamar no WhatsApp</a>
+    </div>
+    <ul>
+      <li><i class="fa-brands fa-whatsapp"></i><div><small>WhatsApp</small><span>+55 19 99514-9370</span></div></li>
+      <li><i class="fa-brands fa-instagram"></i><div><small>Instagram</small><span>@tovartech.dev</span></div></li>
+      <li><i class="fa-solid fa-location-dot"></i><div><small>Localização</small><span>Louveira - SP</span></div></li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <span>© <span id="ano"></span> TovarTechnology. Todos os direitos reservados.</span>
+    <span>Desenvolvido por José Tovar</span>
   </div>
 </footer>
 
-    <!-- SCRIPTS -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({ once: true, disableMutationObserver: false });
-
-        const sectorData = {
-            alimentacao: { title: 'Cardápios Digitais & Atendimento Direto', desc: 'Estruturação de páginas de apresentação e catálogos integrados ao WhatsApp para simplificar pedidos e reduzir intermediações.', bullets: ['Cardápio Rápido', 'Direcionamento WhatsApp', 'Layout Responsivo'] },
-            estetica: { title: 'Páginas para Clínicas & Salões', desc: 'Layouts profissionais para destacar seus procedimentos, galeria de trabalhos e atalhos rápidos para agendamento.', bullets: ['Exibição de Serviços', 'Acesso Fácil a Agendamentos', 'Design Elegante'] },
-            pet: { title: 'Plataformas para Petshops & Clínicas', desc: 'Páginas leves para organizar planos de saúde animal, banho/tosa e informações essenciais de atendimento.', bullets: ['Localização Fácil', 'Serviços em Destaque', 'Navegação Simples'] },
-            comercio: { title: 'Catálogos Web para Lojas', desc: 'Apresentação de produtos em interface limpa e rápida para facilitar o contato de compradores via WhatsApp.', bullets: ['Catálogo Organizado', 'Foco no Cliente', 'Carregamento Rápido'] }
-        };
-
-        const modalDataDetails = {
-            pme: { icon: '<i class="fa-solid fa-store text-indigo-400 text-2xl"></i>', title: 'Pequenas e Médias Empresas', body: '<p><b>Foco:</b> Fortalecimento da marca e captação de clientes.</p><p>Desenvolvimento de páginas com foco em usabilidade e velocidade. Garantimos que seu cliente encontre todas as informações necessárias sobre seu negócio de maneira direta e profissional.</p>' },
-            corp: { icon: '<i class="fa-solid fa-building text-indigo-400 text-2xl"></i>', title: 'Soluções Corporativas', body: '<p><b>Foco:</b> Credibilidade, estabilidade e segurança.</p><p>Sistemas institucionais robustos desenvolvidos com rigor técnico, otimização de velocidade e compatibilidade total com os padrões do mercado.</p>' },
-            ia: { icon: '<i class="fa-solid fa-gears text-indigo-400 text-2xl"></i>', title: 'Automação & Atendimento', body: '<p><b>Foco:</b> Agilidade comercial.</p><p>Integração de formulários inteligentes, direcionamento para WhatsApp e assistentes de apoio que respondem dúvidas frequentes sem deixar seu cliente esperando.</p>' },
-            proj1: { icon: '<i class="fa-solid fa-laptop-code text-indigo-400 text-2xl"></i>', title: 'Exemplo: Estrutura Web Profissional', body: '<p><b>Estrutura:</b> Design moderno, responsivo e adaptado para conversão.</p><p>Uma demonstração prática de como a estrutura visual e os conteúdos organizados ajudam a reter a atenção do cliente e facilitam a jornada até o orçamento.</p>' },
-            proj2: { icon: '<i class="fa-solid fa-robot text-emerald-400 text-2xl"></i>', title: 'Exemplo: Agente de IA para Atendimento', body: '<p><b>Funcionalidade:</b> IA integrada para suporte comercial 24/7.</p><p>Demonstração de como um robô inteligente atende seu cliente instantaneamente no WhatsApp, coleta dados relevantes e reduz drasticamente o tempo de espera.</p>' }
-        };
-
-        function switchSector(key, button) {
-            const data = sectorData[key];
-            if(!data) return;
-
-            if(button) {
-                document.querySelectorAll('.sector-btn').forEach(btn => {
-                    btn.classList.remove('border-indigo-500', 'bg-indigo-600/10', 'text-indigo-400');
-                    btn.classList.add('border-slate-800', 'bg-slate-900/50', 'text-slate-400');
-                });
-                button.classList.remove('border-slate-800', 'bg-slate-900/50', 'text-slate-400');
-                button.classList.add('border-indigo-500', 'bg-indigo-600/10', 'text-indigo-400');
-            }
-
-            const container = document.getElementById('sectorContent');
-            container.style.opacity = 0;
-            
-            setTimeout(() => {
-                let bulletsHtml = data.bullets.map(b => `<div class="flex items-center gap-2"><i class="fa-regular fa-circle-check text-indigo-400 shrink-0"></i> <span>${b}</span></div>`).join('');
-                
-                container.innerHTML = `
-                    <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center w-full">
-                        <div class="md:col-span-7 space-y-2">
-                            <h3 class="text-lg md:text-xl font-bold text-white">${data.title}</h3>
-                            <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">${data.desc}</p>
-                        </div>
-                        <div class="md:col-span-5 flex flex-col gap-2 border-t md:border-t-0 md:border-l border-slate-800 pt-4 md:pt-0 md:pl-6 text-xs text-slate-300 font-medium">
-                            ${bulletsHtml}
-                        </div>
-                    </div>
-                `;
-                container.style.opacity = 1;
-            }, 150);
-        }
-
-        function openModal(key) {
-            const data = modalDataDetails[key];
-            if(!data) return;
-
-            document.getElementById('modalHeader').innerHTML = data.icon;
-            document.getElementById('modalTitle').innerText = data.title;
-            document.getElementById('modalBody').innerHTML = data.body;
-
-            const modal = document.getElementById('infoModal');
-            modal.classList.remove('opacity-0', 'pointer-events-none');
-            modal.querySelector('div').classList.remove('scale-95');
-        }
-
-        function closeModal() {
-            const modal = document.getElementById('infoModal');
-            modal.classList.add('opacity-0', 'pointer-events-none');
-            modal.querySelector('div').classList.add('scale-95');
-        }
-
-        function openAboutModal() {
-            const modal = document.getElementById('aboutModal');
-            modal.classList.remove('opacity-0', 'pointer-events-none');
-            modal.querySelector('div').classList.remove('scale-95');
-        }
-
-        function closeAboutModal() {
-            const modal = document.getElementById('aboutModal');
-            modal.classList.add('opacity-0', 'pointer-events-none');
-            modal.querySelector('div').classList.add('scale-95');
-        }
-
-        switchSector('alimentacao', document.querySelector('.sector-btn'));
-
-        // --- SUBTLE BACKGROUND CANVAS EFFECT ---
-        const canvas = document.getElementById('starsCanvas');
-        const ctx = canvas.getContext('2d');
-
-        let stars = [];
-        const numStars = 100;
-        const maxDepth = 1000; 
-
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            initStars();
-        }
-
-        class Star {
-            constructor() {
-                this.reset();
-                this.z = Math.random() * maxDepth;
-            }
-
-            reset() {
-                this.x = (Math.random() - 0.5) * canvas.width * 2;
-                this.y = (Math.random() - 0.5) * canvas.height * 2;
-                this.z = maxDepth;
-                this.speedZ = Math.random() * 0.8 + 0.2;
-                this.baseOpacity = Math.random() * 0.6 + 0.3;
-            }
-
-            update() {
-                this.z -= this.speedZ;
-                if (this.z <= 0) {
-                    this.reset();
-                }
-            }
-
-            draw() {
-                const centerX = canvas.width / 2;
-                const centerY = canvas.height / 2;
-                const fov = 350; 
-                
-                const screenX = (this.x / this.z) * fov + centerX;
-                const screenY = (this.y / this.z) * fov + centerY;
-
-                const size = (1 - this.z / maxDepth) * 1.5 + 0.2;
-
-                if (screenX < 0 || screenX > canvas.width || screenY < 0 || screenY > canvas.height) {
-                    return;
-                }
-
-                ctx.beginPath();
-                ctx.arc(screenX, screenY, size, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(165, 180, 252, ${this.baseOpacity})`; 
-                ctx.fill();
-            }
-        }
-
-        function initStars() {
-            stars = [];
-            for (let i = 0; i < numStars; i++) {
-                stars.push(new Star());
-            }
-        }
-
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            for (let i = 0; i < stars.length; i++) {
-                stars[i].update();
-                stars[i].draw();
-            }
-            requestAnimationFrame(animate);
-        }
-
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
-        animate();
-    </script>
+<script>
+// Troca de abas na seção de setores
+document.querySelectorAll('.aba').forEach(function(botao){
+  botao.addEventListener('click', function(){
+    document.querySelectorAll('.aba').forEach(function(b){b.classList.remove('ativa');b.setAttribute('aria-selected','false')});
+    document.querySelectorAll('.painel').forEach(function(p){p.classList.remove('ativo')});
+    botao.classList.add('ativa');
+    botao.setAttribute('aria-selected','true');
+    document.getElementById(botao.dataset.alvo).classList.add('ativo');
+  });
+});
+// Ano atual no rodapé
+document.getElementById('ano').textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
