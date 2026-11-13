@@ -1,0 +1,992 @@
+  /* --- VARIABLES GLOBALES DE COLOR Y DISEÑO --- */
+        :root {
+            --bg-primary: #020816;         /* Fondo principal muy oscuro (slate-950) */
+            --bg-secondary: #090e1a;       /* Fondo de tarjetas y secciones (slate-900) */
+            --bg-card: rgba(2, 6, 14, 0.37);
+            --border-color: #121a27;       /* Color de bordes sutiles (slate-800) */
+            --border-dark: #1f2227;        /* Bordes divisorios (slate-900) */
+            --text-primary: #071727;       /* Texto blanco principal (slate-100) */
+            --text-secondary: #b8cfe6;     /* Texto claro secundario (slate-300) */
+            --text-muted: #c6cacf;         /* Texto apagado/descripciones (slate-400) */
+            --accent-indigo: #585aad;      /* Color de marca principal (indigo-500) */
+            --accent-indigo-light: #3e49a8;/* Indigo claro para textos/iconos (indigo-400) */
+            --accent-indigo-dark: #18182b; /* Indigo oscuro para botones (indigo-600) */
+            --accent-emerald: #10b981;     /* Verde esmeralda (emerald-500) */
+            --accent-emerald-dark: #059669;/* Verde esmeralda botón (emerald-600) */
+            --accent-whatsapp: #25D366;    /* Verde oficial de WhatsApp */
+            --accent-rose: #af283c;        /* Rojo/Rosa para advertencias (rose-400) */
+        }
+
+        /* --- RESETEO Y REGLAS BASE --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth; /* Desplazamiento suave al hacer clic en enlaces internos */
+            max-width: 100%;
+            overflow-x: hidden;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            position: relative;
+            width: 100%;
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        /* Color al seleccionar texto con el ratón */
+        ::selection {
+            background-color: var(--accent-indigo);
+            color: #ffffff;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* --- LIENZO DE FONDO (ESTRELLAS ANIMADAS) --- */
+        #starsCanvas {
+            position: fixed;
+            inset: 0;
+            pointer-events: none; /* Permite hacer clic a través del canvas */
+            z-index: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.4;
+        }
+
+        /* --- CLASES DE UTILIDAD DE CONTENEDOR --- */
+        .container {
+            max-width: 72rem; /* Equivalente a max-w-6xl (1152px) */
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            width: 100%;
+        }
+
+        .container-sm {
+            max-width: 56rem; /* Equivalente a max-w-4xl (896px) */
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            width: 100%;
+        }
+
+        .section-padding {
+            padding: 5rem 0;
+            position: relative;
+            z-index: 10;
+        }
+
+        .section-alt {
+            background-color: rgba(15, 23, 42, 0.4);
+            border-top: 1px solid var(--border-dark);
+            border-bottom: 1px solid var(--border-dark);
+        }
+
+        /* --- ANIMACIONES DE ENTRADA (REEMPLAZO DE AOS) --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ==========================================================================
+           3. HEADER Y NAVEGACIÓN
+           ========================================================================== */
+        .header {
+            position: sticky;
+            top: 0;
+            background-color: rgba(2, 6, 23, 0.85);
+            backdrop-filter: blur(12px); /* Efecto cristal esmerilado */
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-dark);
+            z-index: 40;
+            width: 100%;
+        }
+
+        .nav-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            max-width: 72rem;
+            margin: 0 auto;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .brand-logo video {
+            width: 2.75rem;
+            height: 2.75rem;
+            object-fit: cover;
+            border-radius: 50%;
+            background: transparent;
+        }
+
+        .brand-text {
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            color: #ffffff;
+            white-space: nowrap;
+        }
+
+        .brand-text span {
+            color: var(--accent-indigo);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+
+        .nav-links a.nav-item {
+            display: none; /* Oculto en móviles por defecto */
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a.nav-item:hover {
+            color: var(--accent-indigo-light);
+        }
+
+        .btn-nav-whatsapp {
+            background-color: rgba(37, 211, 102, 0.1);
+            color: var(--accent-whatsapp);
+            border: 1px solid rgba(37, 211, 102, 0.3);
+            padding: 0.45rem 0.85rem;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .btn-nav-whatsapp:hover {
+            background-color: var(--accent-whatsapp);
+            color: #ffffff;
+        }
+
+        /* ==========================================================================
+           4. SECCIÓN HERO (PORTADA PRINCIPAL)
+           ========================================================================== */
+        .hero {
+            max-width: 64rem;
+            margin: 0 auto;
+            padding: 5rem 1.5rem 6rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 75vh;
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 0.9rem;
+            border-radius: 9999px;
+            border: 1px solid var(--border-color);
+            background-color: rgba(15, 23, 42, 0.8);
+            font-size: 0.85rem;
+            color: var(--accent-indigo-light);
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+
+        .pulse-dot {
+            width: 0.5rem;
+            height: 0.5rem;
+            border-radius: 50%;
+            background-color: var(--accent-indigo);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.85); }
+        }
+
+        .hero-title {
+            font-size: 2.25rem;
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            line-height: 1.15;
+            color: #ffffff;
+            max-width: 56rem;
+        }
+
+        .hero-title span.highlight {
+            color: var(--accent-indigo-light);
+        }
+
+        .hero-subtitle {
+            margin-top: 1.5rem;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 42rem;
+            line-height: 1.65;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 2rem;
+            width: 100%;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-indigo-dark);
+            color: #ffffff;
+            padding: 0.9rem 1.75rem;
+            border-radius: 0.75rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.2);
+            text-align: center;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-indigo);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            padding: 0.9rem 1.75rem;
+            border-radius: 0.75rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .btn-secondary:hover {
+            background-color: #1e293b;
+            border-color: #334155;
+        }
+
+        /* ==========================================================================
+           5. ENCABEZADOS DE SECCIÓN Y GRILLAS
+           ========================================================================== */
+        .section-header {
+            text-align: center;
+            max-width: 42rem;
+            margin: 0 auto 3.5rem;
+        }
+
+        .section-tag {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent-indigo-light);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title {
+            font-size: 1.875rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            color: #ffffff;
+            margin-bottom: 0.75rem;
+        }
+
+        .section-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Grillas responsivas */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.75rem;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        /* ==========================================================================
+           6. TARJETAS DE SERVICIOS Y VENTAJAS
+           ========================================================================== */
+        .service-card {
+            padding: 2rem;
+            border: 1px solid rgba(30, 40, 59, 0.973);
+            border-radius: 1rem;
+            background-color: var(--bg-card);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .service-card:hover {
+            border-color: rgba(99, 102, 241, 0.5);
+            transform: translateY(-4px);
+        }
+
+        .service-icon {
+            width: 3rem;
+            height: 3rem;
+            background-color: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(149, 151, 238, 0.2);
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-indigo-light);
+            margin-bottom: 1.5rem;
+            font-size: 1.25rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.75rem;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-link {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent-indigo-light);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .service-card:hover .card-link {
+            text-decoration: underline;
+        }
+
+        /* Tarjetas de Diferenciales Técnicos */
+        .benefit-card {
+            padding: 1.5rem;
+            border: 1px solid var(--border-dark);
+            border-radius: 0.75rem;
+            background-color: rgba(40, 43, 49, 0.24);
+            text-align: center;
+            transition: border-color 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            border-color: var(--border-color);
+        }
+
+        .benefit-icon {
+            font-size: 1.5rem;
+            color: var(--accent-indigo-light);
+            margin-bottom: 0.75rem;
+        }
+
+        .benefit-card h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
+        .benefit-card p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* ==========================================================================
+           7. SECCIÓN DE SECTORES (PESTAÑAS INTERACTIVAS)
+           ========================================================================== */
+        .sector-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .sector-btn {
+            padding: 0.6rem 1rem;
+            border-radius: 0.75rem;
+            border: 1px solid var(--border-color);
+            background-color: rgba(15, 23, 42, 0.5);
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .sector-btn:hover {
+            border-color: #334155;
+            color: #e2e8f0;
+        }
+
+        .sector-btn.active {
+            border-color: var(--accent-indigo);
+            background-color: rgba(79, 70, 229, 0.12);
+            color: var(--accent-indigo-light);
+        }
+
+        .sector-box {
+            max-width: 56rem;
+            margin: 0 auto;
+            border: 1px solid rgba(30, 41, 59, 0.8);
+            background-color: rgba(10, 16, 29, 0.5);
+            border-radius: 1rem;
+            padding: 2rem;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            transition: opacity 0.2s ease;
+        }
+
+        .sector-inner-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            width: 100%;
+            align-items: center;
+        }
+
+        .sector-bullets {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1rem;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .bullet-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* ==========================================================================
+           8. EJEMPLOS DE APLICACIONES WEB E IA
+           ========================================================================== */
+        .project-card {
+            background-color: rgba(12, 19, 37, 0.4);
+            border-radius: 1rem;
+            overflow: hidden;
+            border: 1px solid rgba(30, 41, 59, 0.8);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-4px);
+        }
+
+        .project-img-wrapper {
+            height: 14rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .project-img-wrapper img {
+            transform: scale(1.03);
+        }
+
+        .project-overlay {
+            position: absolute;
+            inset: 0;
+            background-color: rgba(2, 6, 23, 0.199);
+        }
+
+        .project-body {
+            padding: 1.5rem;
+        }
+
+        .badge-indigo {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--accent-indigo-light);
+            background-color: rgba(94, 94, 226, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            padding: 0.25rem 0.65rem;
+            border-radius: 0.375rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .badge-emerald {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #34d399;
+            background-color: rgba(16, 185, 129, 0.192);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            padding: 0.25rem 0.65rem;
+            border-radius: 0.375rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .project-body h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .project-card:hover .title-indigo { color: var(--accent-indigo-light); }
+        .project-card:hover .title-emerald { color: #34d399; }
+
+        .project-body p {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        /* ==========================================================================
+           9. COMPARATIVA ESTRATÉGICA (VENTAJAS VS DESVENTAJAS)
+           ========================================================================== */
+        .comp-card-pro {
+            padding: 2rem;
+            background-color: rgba(15, 23, 42, 0.281);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 1rem;
+        }
+
+        .comp-card-con {
+            padding: 2rem;
+            background-color: rgba(8, 13, 24, 0.7);
+            border: 1px solid rgba(194, 33, 60, 0.247);
+            border-radius: 1rem;
+        }
+
+        .comp-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .comp-header h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .comp-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .comp-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+        }
+
+        .comp-list li i {
+            margin-top: 0.25rem;
+            flex-shrink: 0;
+        }
+
+        .highlight-banner {
+            margin-top: 2.5rem;
+            padding: 2rem;
+            border: 1px solid var(--border-color);
+            background-color: rgb(44, 49, 70);
+            border-radius: 1rem;
+            text-align: center;
+            max-width: 56rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .highlight-banner h3 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.75rem;
+        }
+
+        .highlight-banner p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* ==========================================================================
+           10. PROCESO DE TRABAJO (4 PASOS)
+           ========================================================================== */
+        .step-card {
+            padding: 1.5rem;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+        }
+
+        .step-number {
+            color: var(--accent-indigo-light);
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .step-card h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-card p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* ==========================================================================
+           11. SOBRE MÍ (RESPONSABLE TÉCNICO)
+           ========================================================================== */
+        .about-box {
+            max-width: 36rem;
+            margin: 0 auto;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .avatar-wrapper {
+            width: 10.5rem;
+            height: 10.5rem;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid rgba(99, 102, 241, 0.35);
+            background-color: var(--bg-secondary);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.466);
+            margin-bottom: 1.25rem;
+            position: relative;
+        }
+
+        .avatar-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .avatar-dimmer {
+            position: absolute;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.178); /* Máscara sutil para reducir brillo */
+            pointer-events: none;
+        }
+
+        .divider-line {
+            width: 4rem;
+            height: 2px;
+            background-color: rgba(99, 102, 241, 0.4);
+            margin: 1.25rem 0;
+            border-radius: 9999px;
+        }
+
+        .btn-about {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.65rem 1.25rem;
+            border-radius: 0.75rem;
+            border: 1px solid var(--border-color);
+            background-color: rgba(15, 23, 42, 0.8);
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .btn-about:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            color: #ffffff;
+        }
+
+        /* ==========================================================================
+           12. PREGUNTAS FRECUENTES (ACORDEÓN NATIVO HTML)
+           ========================================================================== */
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .faq-item {
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            background-color: rgba(32, 39, 54, 0.363);
+            padding: 1.1rem 1.25rem;
+        }
+
+        .faq-item summary {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            font-weight: 500;
+            color: #ffffff;
+            font-size: 0.95rem;
+            list-style: none;
+        }
+
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-icon {
+            color: var(--accent-indigo-light);
+            font-size: 0.75rem;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item[open] .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            margin-top: 0.85rem;
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* ==========================================================================
+           13. CONTACTO Y FOOTER
+           ========================================================================== */
+        .contact-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 28rem;
+            margin: 1.5rem auto 0;
+            width: 100%;
+        }
+
+        .btn-whatsapp-lg {
+            flex: 1;
+            background-color: var(--accent-emerald-dark);
+            color: #ffffff;
+            padding: 0.9rem 1.25rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 10px 15px -3px rgba(5, 150, 105, 0.15);
+        }
+
+        .btn-whatsapp-lg:hover {
+            background-color: var(--accent-emerald);
+        }
+
+        .btn-email-lg {
+            flex: 1;
+            background-color: var(--accent-indigo-dark);
+            color: #ffffff;
+            padding: 0.9rem 1.25rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.15);
+        }
+
+        .btn-email-lg:hover {
+            background-color: var(--accent-indigo);
+        }
+
+        .footer {
+            width: 100%;
+            background-color: var(--bg-primary);
+            border-top: 1px solid var(--border-dark);
+            padding: 2rem 1rem;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            margin-bottom: 0.75rem;
+        }
+
+        /* ==========================================================================
+           14. VENTANAS MODALES (POP-UPS)
+           ========================================================================== */
+        .modal-backdrop {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(7, 16, 59, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-backdrop.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-box {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            max-width: 34rem;
+            width: 100%;
+            padding: 2rem;
+            position: relative;
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+            text-align: left;
+        }
+
+        .modal-backdrop.open .modal-box {
+            transform: scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.25rem;
+            right: 1.25rem;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .modal-close:hover {
+            color: #ffffff;
+        }
+
+        .modal-body-text {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.65;
+            margin-top: 1rem;
+        }
+
+        .modal-body-text p {
+            margin-bottom: 0.75rem;
+        }
+
+        .modal-footer-actions {
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.75rem;
+        }
+
+        /* ==========================================================================
+           15. MEDIA QUERIES (DISEÑO RESPONSIVO PARA TABLETS Y ESCRITORIO)
+           ========================================================================== */
+        @media (min-width: 640px) {
+            .hero-title { font-size: 3rem; }
+            .hero-actions { flex-direction: row; width: auto; }
+            .contact-actions { flex-direction: row; }
+            .footer-brand { flex-direction: row; gap: 0.6rem; }
+        }
+
+        @media (min-width: 768px) {
+            .nav-links a.nav-item { display: inline-block; } /* Muestra enlaces en PC */
+            .hero-title { font-size: 3.75rem; }
+            .section-title { font-size: 2.25rem; }
+            .grid-2 { grid-template-columns: repeat(2, 1fr); }
+            .grid-3 { grid-template-columns: repeat(3, 1fr); }
+            .grid-4 { grid-template-columns: repeat(2, 1fr); }
+            
+            .sector-inner-grid {
+                grid-template-columns: 7fr 5fr;
+            }
+            .sector-bullets {
+                border-top: none;
+                border-left: 1px solid var(--border-color);
+                padding-top: 0;
+                padding-left: 1.5rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .grid-4 { grid-template-columns: repeat(4, 1fr); }
+        }
